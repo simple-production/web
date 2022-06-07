@@ -14,9 +14,7 @@ const config = {
 	}),
 
 	kit: {
-		adapter: vercel({
-			edge: true
-		}),
+		adapter: vercel(),
 		vite: {
 			resolve: {
 				alias: {
