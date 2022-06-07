@@ -1,4 +1,4 @@
-import nodeAdapter from '@sveltejs/adapter-node';
+import vercel from '@sveltejs/adapter-vercel';
 import { fileURLToPath } from 'url';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
@@ -14,7 +14,9 @@ const config = {
 	}),
 
 	kit: {
-		adapter: nodeAdapter({ out: 'build' }),
+		adapter: vercel({
+			edge: true
+		}),
 		vite: {
 			resolve: {
 				alias: {
