@@ -2,12 +2,13 @@
 	import Icon from '@/components/icons/icon.svelte';
 	import Link from '@/components/layout/link.svelte';
 	import Routes from '@/constants/routes';
+	import type { Tip } from '@/models/tip';
 	import AiFillHeart from 'svelte-icons-pack/ai/AiFillHeart';
 	import AiOutlineHeart from 'svelte-icons-pack/ai/AiOutlineHeart';
 
 	export let title: string;
 	export let slug: string;
-	export let coverImage: string;
+	export let coverImage: Tip['coverImage'];
 
 	let isLiked = false;
 
@@ -21,7 +22,7 @@
 <Link {href} class="block space-y-4 group">
 	<div class="overflow-hidden max-h-[60vh] rounded-sm">
 		<img
-			src={coverImage}
+			src={coverImage.url}
 			alt={title}
 			class="w-full h-full object-center object-cover group-hover:scale-[1.01] transition-all duration-500"
 		/>

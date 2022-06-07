@@ -40,7 +40,7 @@
 
 		<div class="hidden gap-8 md:flex">
 			{#each routes as { path, label }}
-				<Link class="drop-shadow-sm transition-all font-medium" href={path}>{label}</Link>
+				<Link class="drop-shadow-sm transition-all" href={path}>{label}</Link>
 			{/each}
 		</div>
 	</div>

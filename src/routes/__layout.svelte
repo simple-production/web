@@ -1,7 +1,10 @@
 <script lang="ts" context="module">
-	export const load: Load = ({ url }) => {
+	export const load: Load = async ({ url, fetch }) => {
+		const tips = await fetch('/api/tips?take=3').then((res) => res.json());
+
 		return {
 			props: {
+				tips: tips.data,
 				key: url.pathname
 			}
 		};
@@ -15,10 +18,12 @@
 	import PageTransition from '@/components/layout/page-transition.svelte';
 	import Meta from '@/components/meta.svelte';
 	import Routes from '@/constants/routes';
+	import type { Tip } from '@/models/tip';
 	import '@/styles/main.scss';
 	import type { Load } from '@sveltejs/kit';
 
 	export let key: string;
+	export let tips: Tip[];
 
 	$: isRoot = $page.url.pathname === Routes.home;
 	$: isContact = $page.url.pathname === Routes.contact;
@@ -35,7 +40,7 @@
 		</main>
 	</PageTransition>
 
-	<Footer />
+	<Footer {tips} />
 </div>
 
 <style lang="scss">

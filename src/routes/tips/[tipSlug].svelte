@@ -18,7 +18,8 @@
 					tip
 				},
 				stuff: {
-					title: tip.title
+					title: tip.title,
+					description: tip.content.text
 				}
 			};
 		} catch {
@@ -34,7 +35,7 @@
 	export let tip: Tip;
 </script>
 
-<div class="max-w">
+<div class="max-w pt-40">
 	<TipComponent {...tip} />
 </div>
 

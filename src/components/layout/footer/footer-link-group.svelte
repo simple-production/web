@@ -16,7 +16,7 @@
 	</li>
 
 	{#each links as { label, path }}
-		<li>
+		<li class="max-w-[20ch] overflow-hidden text-ellipsis whitespace-nowrap">
 			<Link href={path}>{label}</Link>
 		</li>
 	{/each}

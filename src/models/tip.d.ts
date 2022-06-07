@@ -4,20 +4,16 @@ export type Tip = {
 	id: string;
 	title: string;
 	slug: string;
-	content: string;
-	coverImage: string;
-	likes: number | null;
+	content: {
+		html: string;
+		text: string;
+	};
+	coverImage: {
+		url: string;
+	};
+	likes: number;
 	publishedBy: User;
 	publishedAt: string;
 	updatedBy: User;
 	updatedAt: string;
-};
-
-export type TipResponse = Omit<Tip, 'coverImage' | 'content'> & {
-	coverImage: {
-		url: string;
-	};
-	content: {
-		html: string;
-	};
 };
