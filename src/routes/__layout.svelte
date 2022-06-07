@@ -1,22 +1,42 @@
+<script lang="ts" context="module">
+	export const load: Load = ({ url }) => {
+		return {
+			props: {
+				key: url.pathname
+			}
+		};
+	};
+</script>
+
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Footer from '@/components/layout/footer/footer.svelte';
 	import Navbar from '@/components/layout/navbar.svelte';
+	import PageTransition from '@/components/layout/page-transition.svelte';
 	import Meta from '@/components/meta.svelte';
+	import Routes from '@/constants/routes';
 	import '@/styles/main.scss';
+	import type { Load } from '@sveltejs/kit';
 
-	$: isRoot = $page.url.pathname === '/';
+	export let key: string;
+
+	$: isRoot = $page.url.pathname === Routes.home;
+	$: isContact = $page.url.pathname === Routes.contact;
 </script>
 
 <Meta />
 
-<Navbar {isRoot} />
+<div class="transition-all" class:bg-gray-800={isContact} class:text-white={isContact}>
+	<Navbar {isRoot} />
 
-<main class:mt-40={!isRoot}>
-	<slot />
-</main>
+	<PageTransition {key}>
+		<main>
+			<slot />
+		</main>
+	</PageTransition>
 
-<Footer />
+	<Footer />
+</div>
 
 <style lang="scss">
 </style>

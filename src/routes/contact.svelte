@@ -1,8 +1,13 @@
 <script lang="ts">
-	// export let prop: string = '';
+	import Heading from '@/components/typography/heading.svelte';
 </script>
 
-<div class="contact">Replace with your HTML</div>
+<div class="h-screen pt-40 max-w">
+	<Heading class="text-center">
+		<svelte:fragment slot="black-before">Get in</svelte:fragment>
+		<svelte:fragment slot="green">touch</svelte:fragment>
+	</Heading>
+</div>
 
 <style lang="scss">
 </style>

@@ -31,7 +31,7 @@
 	export let pagination: Pagination;
 </script>
 
-<div class="max-w space-y-24">
+<div class="max-w space-y-24 pt-40">
 	<div class="space-y-8">
 		<Heading>
 			<svelte:fragment slot="black-before">Latest</svelte:fragment>
