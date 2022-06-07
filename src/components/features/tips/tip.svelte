@@ -27,7 +27,7 @@
 		if (hasNavigator) {
 			navigator.share({
 				title: `${$page.stuff.title}`,
-				text: content.text,
+				text: 'Check out this really cool tip from Simple Production!',
 				url: $page.url.href
 			});
 		}
