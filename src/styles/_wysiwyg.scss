@@ -1,0 +1,38 @@
+.wysiwyg {
+	@apply space-y-2;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-semibold;
+	}
+
+	h1 {
+		@apply text-3xl;
+	}
+
+	h2 {
+		@apply text-2xl;
+	}
+
+	h3 {
+		@apply text-lg;
+	}
+
+	h4,
+	h5,
+	h6 {
+		@apply text-base;
+	}
+
+	strong {
+		@apply font-semibold;
+	}
+
+	ul {
+		list-style: circle;
+	}
+}

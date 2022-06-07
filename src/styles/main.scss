@@ -1,0 +1,7 @@
+// import the tailwind base stuff
+@use './tailwind' as *;
+@use './wysiwyg' as *;
+
+.max-w {
+	@apply max-w-5xl mx-auto px-8 xl:px-0;
+}
