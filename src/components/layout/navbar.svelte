@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Routes from '@/constants/routes';
 	import type { Route } from '@/models/route';
 	import Link from './link.svelte';
@@ -40,7 +41,8 @@
 
 		<div class="hidden gap-8 md:flex">
 			{#each routes as { path, label }}
-				<Link class="drop-shadow-sm transition-all" href={path}>{label}</Link>
+				{@const isActive = path === $page.url.pathname || $page.url.pathname.startsWith(path)}
+				<Link class="drop-shadow-sm transition-all" href={path} {isActive}>{label}</Link>
 			{/each}
 		</div>
 	</div>
