@@ -18,6 +18,10 @@
 	};
 
 	$: isVideo = mimeType.startsWith('video/');
+	// play one second of the video so that it shows up
+	$: if (isVideo && videoRef) {
+		videoRef.currentTime = 1;
+	}
 </script>
 
 {#if !isVideo}
