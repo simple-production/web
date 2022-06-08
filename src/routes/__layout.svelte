@@ -38,7 +38,7 @@
 	<Navbar {isRoot} />
 
 	<PageTransition {key}>
-		<main class="min-h-screen" class:pt-40={!isRoot} class:max-w={!isRoot}>
+		<main class="min-h-screen" class:pt-36={!isRoot} class:max-w={!isRoot}>
 			<slot />
 		</main>
 	</PageTransition>
