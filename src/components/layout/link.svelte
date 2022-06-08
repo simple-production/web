@@ -2,6 +2,8 @@
 	export let href: string;
 	export let label: string | null = null;
 	export let isActive: boolean | null = null;
+
+	$: isExternal = href.startsWith('http');
 </script>
 
 <a
@@ -10,6 +12,7 @@
 	class={$$props.class}
 	class:with-transition={isActive !== null}
 	class:active={isActive}
+	target={isExternal ? '_blank' : ''}
 	on:click
 >
 	<slot /></a
