@@ -10,22 +10,25 @@
 	class={$$props.class}
 	class:with-transition={isActive !== null}
 	class:active={isActive}
+	on:click
 >
 	<slot /></a
 >
 
 <style lang="scss">
 	a.with-transition {
-		&::before {
-			content: '';
-			@apply w-full scale-x-0 transition-all origin-left duration-1000;
-		}
-
-		&.active {
-			@apply relative;
-
+		@screen md {
 			&::before {
-				@apply h-0.5 bg-simple-light absolute -bottom-1 scale-x-100;
+				content: '';
+				@apply w-full scale-x-0 transition-all origin-left duration-1000;
+			}
+
+			&.active {
+				@apply relative;
+
+				&::before {
+					@apply h-0.5 bg-simple-light absolute -bottom-1 scale-x-100;
+				}
 			}
 		}
 	}

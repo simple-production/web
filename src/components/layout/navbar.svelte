@@ -28,6 +28,12 @@
 	];
 
 	export let isRoot: boolean;
+
+	const closeMenu = () => {
+		setTimeout(() => {
+			drawer.close();
+		}, 300);
+	};
 </script>
 
 <header
@@ -49,13 +55,15 @@
 			</button>
 
 			<div
-				class="flex fixed inset-0 bg-simple-light flex-col gap-8 pt-32 text-2xl px-12 md:flex-row md:relative z-0 transition-all md:transition-none md:bg-transparent md:translate-x-0 md:!p-0 md:text-base"
+				class="flex fixed inset-0 bg-simple-light flex-col gap-8 pt-32 text-xl px-12 md:flex-row md:relative z-0 transition-all md:transition-none md:bg-transparent md:translate-x-0 md:!p-0 md:text-base"
 				class:translate-x-full={!$drawer}
 				classtranslate-x-0={$drawer}
 			>
 				{#each routes as { path, label }}
 					{@const isActive = path === $page.url.pathname || $page.url.pathname.startsWith(path)}
-					<Link class="drop-shadow-sm transition-all" href={path} {isActive}>{label}</Link>
+					<Link class="drop-shadow-sm transition-all" href={path} {isActive} on:click={closeMenu}>
+						{label}
+					</Link>
 				{/each}
 			</div>
 		</div>
