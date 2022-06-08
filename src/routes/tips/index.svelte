@@ -3,7 +3,7 @@
 
 	import TipComponent from '@/components/features/tips/tip-for-list.svelte';
 	import Heading from '@/components/typography/heading.svelte';
-	import type { PaginatedResponse, Pagination } from '@/models/paginated-response';
+	import type { PaginatedResponse } from '@/models/paginated-response';
 	import type { Tip } from '@/models/tip';
 	import type { Load } from '@sveltejs/kit';
 
@@ -28,7 +28,7 @@
 
 <script lang="ts">
 	export let tips: Tip[];
-	export let pagination: Pagination;
+	// export let pagination: Pagination;
 
 	$: restOfTips = tips.length ? tips.slice(1) : [];
 </script>
