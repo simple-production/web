@@ -10,7 +10,7 @@ export const TIP_QUERY = `
 			html
 			text
 		}
-		updatedBy {
+		createdBy {
 			name
 			picture
 		}

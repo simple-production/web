@@ -15,7 +15,7 @@
 	export let coverImage: Tip['coverImage'];
 	export let content: Tip['content'];
 	export let likes: number;
-	export let updatedBy: User;
+	export let createdBy: User;
 	export let updatedAt: string;
 	export let isLiked: boolean;
 
@@ -59,7 +59,7 @@
 
 				<span>•</span>
 
-				<span>{updatedBy.name}</span>
+				<span>{createdBy.name}</span>
 			</div>
 		</div>
 

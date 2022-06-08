@@ -16,7 +16,7 @@ export type Tip = {
 	isLiked: boolean;
 	publishedBy: User;
 	publishedAt: string;
-	updatedBy: User;
+	createdBy: User;
 	updatedAt: string;
 };
 
