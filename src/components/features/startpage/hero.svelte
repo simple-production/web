@@ -10,7 +10,7 @@
 		</video>
 	</div>
 
-	<h1 class="z-[1] text-5xl font-bold text-white text-center drop-shadow-md md:text-7xl">
+	<h1 class="z-[1] text-5xl font-bold text-white text-center drop-shadow-md px-8 md:text-7xl">
 		<span class="text-simple-light">Powered by</span>
 		<br />
 		The next generation
