@@ -61,7 +61,7 @@
 			>
 				{#each routes as { path, label }}
 					{@const isActive = path === $page.url.pathname || $page.url.pathname.startsWith(path)}
-					<Link class="drop-shadow-sm transition-all" href={path} {isActive} on:click={closeMenu}>
+					<Link class="drop-shadow-md transition-all" href={path} {isActive} on:click={closeMenu}>
 						{label}
 					</Link>
 				{/each}
