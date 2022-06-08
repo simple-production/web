@@ -13,7 +13,7 @@
 	</div>
 
 	<h1
-		class="z-[1] text-5xl font-bold text-white text-center drop-shadow-md px-8 md:text-7xl w-full"
+		class="z-[1] text-5xl font-bold text-white text-center drop-shadow-md px-8 md:text-7xl w-full pb-32"
 	>
 		<span class="text-simple-light">Powered by</span>
 		<br />
