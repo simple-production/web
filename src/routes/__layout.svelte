@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
 	import { page } from '$app/stores';
 	import Footer from '@/components/layout/footer/footer.svelte';
+	import Loading from '@/components/layout/loading.svelte';
 	import Navbar from '@/components/layout/navbar.svelte';
 	import PageTransition from '@/components/layout/page-transition.svelte';
 	import Meta from '@/components/meta.svelte';
@@ -31,7 +32,9 @@
 
 <Meta />
 
-<div class="transition-all" class:bg-gray-800={isContact} class:text-white={isContact}>
+<Loading />
+
+<div class="transition-all relative" class:bg-gray-800={isContact} class:text-white={isContact}>
 	<Navbar {isRoot} />
 
 	<PageTransition {key}>

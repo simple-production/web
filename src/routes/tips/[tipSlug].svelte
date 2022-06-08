@@ -1,7 +1,11 @@
 <script lang="ts" context="module">
 	import TipComponent from '@/components/features/tips/tip.svelte';
+	import Icon from '@/components/icons/icon.svelte';
+	import Link from '@/components/layout/link.svelte';
+	import Routes from '@/constants/routes';
 	import type { Tip } from '@/models/tip';
 	import type { Load } from '@sveltejs/kit';
+	import FiChevronLeft from 'svelte-icons-pack/fi/FiChevronLeft';
 
 	type Params = {
 		tipSlug: string;
@@ -37,6 +41,13 @@
 <script lang="ts">
 	export let tip: Tip;
 </script>
+
+<Link href={Routes.tips} class="flex items-center text-sm gap-2 mb-4 group">
+	<span class="block transition-all group-hover:-translate-x-1">
+		<Icon icon={FiChevronLeft} title="Back" />
+	</span>
+	<span>All tips</span>
+</Link>
 
 <TipComponent {...tip} />
 
