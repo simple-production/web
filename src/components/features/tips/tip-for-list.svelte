@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '@/components/icons/icon.svelte';
 	import Link from '@/components/layout/link.svelte';
+	import Visual from '@/components/layout/visual.svelte';
 	import Routes from '@/constants/routes';
 	import type { Tip } from '@/models/tip';
 	import AiFillHeart from 'svelte-icons-pack/ai/AiFillHeart';
@@ -9,10 +10,12 @@
 	export let title: string;
 	export let slug: string;
 	export let coverImage: Tip['coverImage'];
+	export let isLiked: boolean;
 
-	let isLiked = false;
-
-	const handleLike = () => {
+	const handleLike = async () => {
+		fetch(`/api/tips/${slug}/like`, {
+			method: 'PUT'
+		});
 		isLiked = !isLiked;
 	};
 
@@ -21,10 +24,11 @@
 
 <Link {href} class="block space-y-4 group">
 	<div class="overflow-hidden max-h-[60vh] rounded-sm">
-		<img
-			src={coverImage.url}
+		<Visual
+			url={coverImage.url}
+			mimeType={coverImage.mimeType}
 			alt={title}
-			class="w-full h-full object-center object-cover group-hover:scale-[1.01] transition-all duration-500"
+			class="w-full h-full object-center object-cover group-hover:scale-[1.05] transition-all duration-500"
 		/>
 	</div>
 

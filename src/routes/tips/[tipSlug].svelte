@@ -15,7 +15,10 @@
 
 			return {
 				props: {
-					tip
+					tip: {
+						...tip,
+						slug: tipSlug
+					}
 				},
 				stuff: {
 					title: tip.title,
@@ -35,9 +38,7 @@
 	export let tip: Tip;
 </script>
 
-<div class="max-w pt-40">
-	<TipComponent {...tip} />
-</div>
+<TipComponent {...tip} />
 
 <style lang="scss">
 </style>

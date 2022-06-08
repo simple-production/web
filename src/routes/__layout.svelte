@@ -1,4 +1,14 @@
 <script lang="ts" context="module">
+	import { page } from '$app/stores';
+	import Footer from '@/components/layout/footer/footer.svelte';
+	import Navbar from '@/components/layout/navbar.svelte';
+	import PageTransition from '@/components/layout/page-transition.svelte';
+	import Meta from '@/components/meta.svelte';
+	import Routes from '@/constants/routes';
+	import type { Tip } from '@/models/tip';
+	import '@/styles/main.scss';
+	import type { Load } from '@sveltejs/kit';
+
 	export const load: Load = async ({ url, fetch }) => {
 		const tips = await fetch('/api/tips?take=3').then((res) => res.json());
 
@@ -12,16 +22,6 @@
 </script>
 
 <script lang="ts">
-	import { page } from '$app/stores';
-	import Footer from '@/components/layout/footer/footer.svelte';
-	import Navbar from '@/components/layout/navbar.svelte';
-	import PageTransition from '@/components/layout/page-transition.svelte';
-	import Meta from '@/components/meta.svelte';
-	import Routes from '@/constants/routes';
-	import type { Tip } from '@/models/tip';
-	import '@/styles/main.scss';
-	import type { Load } from '@sveltejs/kit';
-
 	export let key: string;
 	export let tips: Tip[];
 
@@ -35,7 +35,7 @@
 	<Navbar {isRoot} />
 
 	<PageTransition {key}>
-		<main>
+		<main class="min-h-screen" class:pt-40={!isRoot} class:max-w={!isRoot}>
 			<slot />
 		</main>
 	</PageTransition>

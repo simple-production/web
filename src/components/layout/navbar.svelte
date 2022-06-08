@@ -42,13 +42,19 @@
 	class:bg-gradient-to-b={isRoot}
 >
 	<div class="max-w flex items-center justify-between py-8">
-		<Link href={Routes.home} class="flex items-end gap-2">
-			<img src="/simple.webp" alt="Simple Production Logo" class="h-16" />
+		<!-- Logo -->
+		<Link href={Routes.home} class="flex items-end gap-2 group">
+			<img
+				src="/simple.webp"
+				alt="Simple Production Logo"
+				class="h-16 group-hover:-rotate-6 transition-all"
+			/>
 			<span class="hidden text-xl font-medium pb-2 drop-shadow-sm transition-all md:block">
 				imple Production
 			</span>
 		</Link>
 
+		<!-- Menu -->
 		<div class="gap-8">
 			<button type="menu" class="block text-3xl z-[1] md:hidden relative" on:click={drawer.toggle}>
 				<Icon icon={!$drawer ? FiMenu : FiX} title="Menu" />

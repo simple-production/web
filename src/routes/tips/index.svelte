@@ -29,28 +29,35 @@
 <script lang="ts">
 	export let tips: Tip[];
 	export let pagination: Pagination;
+
+	$: restOfTips = tips.length ? tips.slice(1) : [];
 </script>
 
-<div class="max-w space-y-24 pt-40">
+<div class="space-y-24">
 	<div class="space-y-8">
 		<Heading>
 			<svelte:fragment slot="black-before">Latest</svelte:fragment>
 			<svelte:fragment slot="green">tip</svelte:fragment>
 		</Heading>
 
-		<TipComponent {...tips[0]} />
+		{#if tips.length}
+			<TipComponent {...tips[0]} />
+		{/if}
 	</div>
 
-	<div class="space-y-8">
-		<Heading>
-			<svelte:fragment slot="black-before">More</svelte:fragment>
-			<svelte:fragment slot="green">tips</svelte:fragment>
-		</Heading>
-		<div class="grid grid-cols-2 gap-8">
-			<TipComponent {...tips[0]} />
-			<TipComponent {...tips[0]} />
+	{#if restOfTips.length}
+		<div class="space-y-8">
+			<Heading>
+				<svelte:fragment slot="black-before">More</svelte:fragment>
+				<svelte:fragment slot="green">tips</svelte:fragment>
+			</Heading>
+			<div class="grid grid-cols-2 gap-8">
+				{#each restOfTips as tip}
+					<TipComponent {...tip} />
+				{/each}
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style lang="scss">

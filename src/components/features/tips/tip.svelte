@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Icon from '@/components/icons/icon.svelte';
+	import Visual from '@/components/layout/visual.svelte';
 	import type { Tip } from '@/models/tip';
 	import type { User } from '@/models/user';
 	import { toDate } from '@/utils/date.util';
@@ -10,12 +11,13 @@
 	import AiShare from 'svelte-icons-pack/ai/AiOutlineShareAlt';
 
 	export let title: string;
+	export let slug: string;
 	export let coverImage: Tip['coverImage'];
 	export let content: Tip['content'];
 	export let likes: number;
 	export let updatedBy: User;
 	export let updatedAt: string;
-	export let isLiked: boolean = false;
+	export let isLiked: boolean;
 
 	let hasNavigator = false;
 
@@ -30,6 +32,20 @@
 				text: 'Check out this really cool tip from Simple Production!',
 				url: $page.url.href
 			});
+		}
+	};
+
+	const handleLike = () => {
+		fetch(`/api/tips/${slug}/like`, {
+			method: 'PUT'
+		});
+
+		isLiked = !isLiked;
+
+		if (isLiked) {
+			likes++;
+		} else {
+			likes--;
 		}
 	};
 </script>
@@ -59,17 +75,16 @@
 					<span class="text-sm">{likes}</span>
 				{/if}
 
-				<button class="" class:text-red-400={isLiked}>
+				<button class="" class:text-red-400={isLiked} on:click={handleLike}>
 					<Icon icon={isLiked ? AiFillHeart : AiOutlineHeart} title="Like" />
 				</button>
 			</div>
 		</div>
 	</div>
 
-	<img
-		src={coverImage.url}
+	<Visual
+		{...coverImage}
 		alt={title}
-		height="420px"
 		class="max-h-[50vh] w-full object-cover object-center rounded-sm"
 	/>
 

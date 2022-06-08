@@ -21,7 +21,6 @@ export const graphQlRequest = async <
 
 	if (!response.ok) {
 		throw response;
-		// throw new Error(`Request failed with status ${response.status}: ${response.statusText}`);
 	}
 
 	const json = await response.json();

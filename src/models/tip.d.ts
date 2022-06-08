@@ -10,10 +10,16 @@ export type Tip = {
 	};
 	coverImage: {
 		url: string;
+		mimeType: string;
 	};
 	likes: number;
+	isLiked: boolean;
 	publishedBy: User;
 	publishedAt: string;
 	updatedBy: User;
 	updatedAt: string;
+};
+
+export type TipResponse = Omit<Tip, 'likes'> & {
+	likes: string[] | null;
 };

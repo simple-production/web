@@ -2,7 +2,8 @@
 	export let href: string | null = null;
 	export let isSubmit: boolean = false;
 
-	const classNames = 'bg-simple-light text-white px-8 py-3 rounded-sm font-semibold';
+	const classNames =
+		'bg-simple-light text-white px-8 py-3 rounded-sm font-semibold transition-all hover:bg-simple-dark';
 </script>
 
 {#if href}
