@@ -4,7 +4,7 @@
 
 <div class="relative flex items-center justify-center h-screen">
 	<div class="absolute inset-0 z-0">
-		<video autoplay class="h-full w-full object-cover object-center" muted>
+		<video class="h-full w-full object-cover object-center" autoplay muted playsinline>
 			<source src="/file.mp4" type="video/mp4" />
 			<track kind="captions" />
 		</video>
