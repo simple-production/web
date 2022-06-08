@@ -25,6 +25,7 @@
 {:else}
 	<video
 		muted
+		playsinline
 		class={$$props.class}
 		bind:this={videoRef}
 		on:mouseenter={handleMouseOver}
