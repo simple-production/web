@@ -22,7 +22,10 @@
 	<FooterLinkGroup title={{ label: 'Services', path: Routes.services }} links={companyRoutes} />
 	<FooterLinkGroup
 		title={{ label: 'Simple Tips', path: Routes.tips }}
-		links={tips.map((t) => ({ label: t.title, path: Routes.tip(t.slug) }))}
+		links={[
+			...tips.map((t) => ({ label: t.title, path: Routes.tip(t.slug) })),
+			{ label: 'View all', path: Routes.tips }
+		]}
 	/>
 	<FooterLinkGroup title="Company" links={companyRoutes} />
 </div>

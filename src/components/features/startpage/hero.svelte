@@ -1,5 +1,7 @@
 <script lang="ts">
 	// export let prop: string = '';
+
+	import ScrollingText from './scrolling-text.svelte';
 </script>
 
 <div class="relative flex items-center justify-center h-screen">
@@ -10,10 +12,12 @@
 		</video>
 	</div>
 
-	<h1 class="z-[1] text-5xl font-bold text-white text-center drop-shadow-md px-8 md:text-7xl">
+	<h1
+		class="z-[1] text-5xl font-bold text-white text-center drop-shadow-md px-8 md:text-7xl w-full"
+	>
 		<span class="text-simple-light">Powered by</span>
 		<br />
-		The next generation
+		<ScrollingText />
 	</h1>
 </div>
 
