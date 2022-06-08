@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@fingerprintjs/fingerprintjs': ^3.3.3
   '@sveltejs/adapter-vercel': 1.0.0-next.58
   '@sveltejs/kit': next
   '@types/cookie': ^0.5.1
@@ -27,7 +26,6 @@ specifiers:
   typescript: ~4.6.4
 
 dependencies:
-  '@fingerprintjs/fingerprintjs': 3.3.3
   cookie: 0.5.0
   dotenv: 16.0.1
   nanoid: 4.0.0
@@ -72,12 +70,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@fingerprintjs/fingerprintjs/3.3.3:
-    resolution: {integrity: sha512-HH6KqZnopF3NIXypYG4f2qxoSRmGCSzp81wJMfWjSTtvsX3cAg12RFJcm+a6Az3XadcZUrXKW3p5Dv0wyCUeuA==}
-    dependencies:
-      tslib: 2.4.0
-    dev: false
 
   /@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -2335,6 +2327,7 @@ packages:
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: true
 
   /tsutils/3.21.0_typescript@4.6.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
