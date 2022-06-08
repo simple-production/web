@@ -22,7 +22,7 @@
 
 {#key text}
 	<span
-		class="inline-block absolute inset-x-0"
+		class="inline-block absolute inset-x-8"
 		in:fly={{ y: -50, duration: TRANSITION_DURATION }}
 		out:fly={{ y: 50, duration: TRANSITION_DURATION }}
 	>
