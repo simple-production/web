@@ -29,6 +29,8 @@
 			mimeType={coverImage.mimeType}
 			alt={title}
 			class="w-full h-full object-center object-cover group-hover:scale-[1.05] transition-all duration-500"
+			autoplay
+			loop
 		/>
 	</div>
 
