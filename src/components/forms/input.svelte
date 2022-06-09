@@ -1,8 +1,11 @@
 <script lang="ts">
+	import Icon from '../icons/icon.svelte';
+
 	export let value: string;
 	export let label: string | null = null;
 	export let name: string;
 	export let isMultiline: boolean = false;
+	export let icon: unknown = null;
 
 	const classes =
 		'px-4 py-4 w-full bg-white/20 rounded-sm outline-none border-2 transition-all border-white/30 focus:border-white/60';
@@ -10,10 +13,15 @@
 
 <div class="relative group mt-4 {$$props.class}">
 	{#if label}
-		<label
-			class="absolute text-sm font-medium duration-300 top-[18px] left-4 transition-all group-focus-within:-top-6 group-focus-within:left-0"
-			for={name}>{label}</label
+		<span
+			class="absolute text-sm font-medium duration-300 top-[18px] left-4 transition-all flex items-center gap-2"
+			class:has-value={value.length > 0}
 		>
+			{#if icon}
+				<Icon {icon} title={label} />
+			{/if}
+			<label class="" for={name}>{label}</label>
+		</span>
 	{/if}
 
 	{#if !isMultiline}
@@ -24,4 +32,8 @@
 </div>
 
 <style lang="scss">
+	div:focus-within span,
+	span.has-value {
+		@apply -top-6 left-0;
+	}
 </style>
