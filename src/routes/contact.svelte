@@ -10,6 +10,7 @@
 
 <script lang="ts">
 	import ContactForm from '@/components/features/contact/contact-form.svelte';
+	import ContactInfo from '@/components/features/contact/contact-info.svelte';
 	import Heading from '@/components/typography/heading.svelte';
 	import type { Load } from '@sveltejs/kit';
 </script>
@@ -19,6 +20,8 @@
 		<svelte:fragment slot="black-before">Get in</svelte:fragment>
 		<svelte:fragment slot="green">touch</svelte:fragment>
 	</Heading>
+
+	<ContactInfo />
 
 	<ContactForm />
 </div>
