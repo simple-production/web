@@ -86,6 +86,8 @@
 		{...coverImage}
 		alt={title}
 		class="max-h-[50vh] w-full object-cover object-center rounded-sm"
+		loop
+		autoplay
 	/>
 
 	<div class="wysiwyg">

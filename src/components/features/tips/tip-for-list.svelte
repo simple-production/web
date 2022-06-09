@@ -25,8 +25,7 @@
 <Link {href} class="block space-y-4 group">
 	<div class="overflow-hidden max-h-[60vh] rounded-sm">
 		<Visual
-			url={coverImage.url}
-			mimeType={coverImage.mimeType}
+			{...coverImage}
 			alt={title}
 			class="w-full h-full object-center object-cover group-hover:scale-[1.05] transition-all duration-500"
 			autoplay
