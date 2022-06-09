@@ -21,13 +21,21 @@
 </script>
 
 <form on:submit={handleSubmit} class="grid grid-cols-2 gap-8">
-	<Input label="Name" name="name" bind:value={$form.name} on:change={handleChange} icon={FiUser} />
+	<Input
+		label="Name"
+		name="name"
+		bind:value={$form.name}
+		on:change={handleChange}
+		icon={FiUser}
+		isRequired
+	/>
 	<Input
 		label="Company"
 		name="company"
 		bind:value={$form.company}
 		on:change={handleChange}
 		icon={BiBuilding}
+		isRequired={false}
 	/>
 	<Input
 		label="Email"
@@ -36,16 +44,18 @@
 		on:change={handleChange}
 		class="col-span-full"
 		icon={FiSend}
+		isRequired
 	/>
 
 	<Input
 		label="Message"
 		name="message"
+		icon={FiMail}
 		bind:value={$form.message}
 		on:change={handleChange}
 		class="col-span-full"
 		isMultiline
-		icon={FiMail}
+		isRequired
 	/>
 	<div class="col-span-full">
 		<Button isSubmit>Send</Button>

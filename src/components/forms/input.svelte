@@ -6,6 +6,7 @@
 	export let name: string;
 	export let isMultiline: boolean = false;
 	export let icon: unknown = null;
+	export let isRequired: boolean | null = null;
 
 	const classes =
 		'px-4 py-4 w-full bg-white/20 rounded-sm outline-none border-2 transition-all border-white/30 focus:border-white/60';
@@ -14,7 +15,7 @@
 <div class="relative group mt-4 {$$props.class}">
 	{#if label}
 		<span
-			class="absolute text-sm font-medium duration-300 top-[18px] left-4 transition-all flex items-center gap-2"
+			class="label-wrapper absolute text-sm font-medium duration-300 top-[18px] left-4 transition-all flex items-center gap-2"
 			class:has-value={value.length > 0}
 		>
 			{#if icon}
@@ -29,11 +30,17 @@
 	{:else}
 		<textarea {name} bind:value on:change rows="3" class="{classes} resize-none" />
 	{/if}
+
+	{#if isRequired != null && !value.length}
+		<span class="absolute right-4 text-xs text-white/70 top-[22px]"
+			>{isRequired ? 'required' : 'optional'}</span
+		>
+	{/if}
 </div>
 
 <style lang="scss">
-	div:focus-within span,
-	span.has-value {
+	div:focus-within .label-wrapper,
+	.label-wrapper.has-value {
 		@apply -top-6 left-0;
 	}
 </style>
