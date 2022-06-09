@@ -21,7 +21,7 @@
 			{#if icon}
 				<Icon {icon} title={label} />
 			{/if}
-			<label class="" for={name}>{label}</label>
+			<label class="" for={name} required={isRequired}>{label}</label>
 		</span>
 	{/if}
 
