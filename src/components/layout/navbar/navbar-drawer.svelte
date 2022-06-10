@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Routes from '@/constants/routes';
+	import { socials } from '@/constants/socials';
 	import type { Route } from '@/models/route';
 	import { drawer } from '@/stores/drawer.store';
 	import FiMenu from 'svelte-icons-pack/fi/FiMenu';
@@ -52,6 +53,17 @@
 				{label}
 			</Link>
 		{/each}
+
+		<div class="mt-auto space-y-2 md:hidden">
+			<p class="text-sm">Follow us on socials</p>
+			<div class="flex items-center gap-4 text-3xl text-gray-800 ">
+				{#each socials as { name, url, icon }}
+					<Link href={url} label={name}>
+						<Icon {icon} title={name} />
+					</Link>
+				{/each}
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -66,6 +78,7 @@
 		bg-white 
 		px-12 
 		pt-32 
+		pb-12
 		text-black 
 		transition-all
 		duration-700

@@ -1,28 +1,8 @@
 <script lang="ts">
 	import Icon from '@/components/icons/icon.svelte';
-	import BiLogoInstagram from 'svelte-icons-pack/bi/BiLogoInstagram';
-	import BiLogoLinkedin from 'svelte-icons-pack/bi/BiLogoLinkedin';
-	import BiLogoYoutube from 'svelte-icons-pack/bi/BiLogoYoutube';
+	import { socials } from '@/constants/socials';
 	import Link from '../link.svelte';
 	const thisYear = new Date().getFullYear();
-
-	const socials = [
-		{
-			name: 'Instagram',
-			url: '',
-			icon: BiLogoInstagram
-		},
-		{
-			name: 'LinkedIn',
-			url: 'https://www.linkedin.com/company/simple-production-ab',
-			icon: BiLogoLinkedin
-		},
-		{
-			name: 'YouTube',
-			url: 'https://www.youtube.com/channel/UC0WzFBXHs4oT42qKlmc4Zmw',
-			icon: BiLogoYoutube
-		}
-	];
 </script>
 
 <div
