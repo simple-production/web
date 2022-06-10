@@ -33,6 +33,10 @@
 			drawer.close();
 		}, 300);
 	};
+
+	$: if ($drawer) {
+		window.scrollTo(0, 0);
+	}
 </script>
 
 <!-- Menu -->

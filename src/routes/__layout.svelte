@@ -7,8 +7,10 @@
 	import Meta from '@/components/meta.svelte';
 	import Routes from '@/constants/routes';
 	import type { Tip } from '@/models/tip';
+	import { drawer } from '@/stores/drawer.store';
 	import '@/styles/main.scss';
 	import type { Load } from '@sveltejs/kit';
+	import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 	export const load: Load = async ({ url, fetch }) => {
 		const tips = await fetch('/api/tips?take=3').then((res) => res.json());
@@ -26,6 +28,21 @@
 	export let key: string;
 	export let tips: Tip[];
 
+	let ref: HTMLDivElement;
+
+	const updateBodyScrollLock = (drawerOpen: boolean) => {
+		if (!ref) {
+			return;
+		}
+
+		if (drawerOpen) {
+			disableBodyScroll(ref);
+		} else {
+			enableBodyScroll(ref);
+		}
+	};
+
+	$: updateBodyScrollLock($drawer);
 	$: isRoot = $page.url.pathname === Routes.home;
 	$: isContact = $page.url.pathname === Routes.contact;
 </script>
@@ -34,7 +51,12 @@
 
 <Loading />
 
-<div class="transition-all relative" class:bg-gray-800={isContact} class:text-white={isContact}>
+<div
+	class="relative transition-all"
+	class:bg-gray-800={isContact}
+	class:text-white={isContact}
+	bind:this={ref}
+>
 	<Navbar {isRoot} />
 
 	<PageTransition {key}>
