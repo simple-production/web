@@ -40,7 +40,7 @@
 >
 	<div class="max-w flex items-center justify-between py-8">
 		<!-- Logo -->
-		<Link href={Routes.home} class="group flex items-end gap-2">
+		<Link href={Routes.home} class="group z-[10] flex items-end gap-2">
 			<img
 				src="/simple.webp"
 				alt="Simple Production Logo"
@@ -51,7 +51,7 @@
 			</span>
 		</Link>
 
-		<NavbarDrawer {isRoot} />
+		<NavbarDrawer />
 	</div>
 </header>
 

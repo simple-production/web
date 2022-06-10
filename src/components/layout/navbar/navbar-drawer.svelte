@@ -27,8 +27,6 @@
 		}
 	];
 
-	export let isRoot: boolean;
-
 	const closeMenu = () => {
 		setTimeout(() => {
 			drawer.close();
@@ -38,14 +36,19 @@
 
 <!-- Menu -->
 <div class="gap-8">
-	<button type="menu" class="relative z-[1] block text-3xl md:hidden" on:click={drawer.toggle}>
+	<button
+		type="menu"
+		class="relative z-[1] block text-3xl transition-all delay-100 duration-500 md:hidden"
+		class:text-black={$drawer}
+		on:click={drawer.toggle}
+	>
 		<Icon icon={!$drawer ? FiMenu : FiX} title="Menu" />
 	</button>
 
-	<div role="menu" class="" class:translate-x-full={!$drawer} class:translate-x-0={$drawer}>
+	<div role="menu" class:translate-x-full={!$drawer} class:translate-x-0={$drawer}>
 		{#each routes as { path, label }}
 			{@const isActive = path === $page.url.pathname || $page.url.pathname.startsWith(path)}
-			<Link class="drop-shadow-md transition-all" href={path} {isActive} on:click={closeMenu}>
+			<Link class="transition-all" href={path} {isActive} on:click={closeMenu}>
 				{label}
 			</Link>
 		{/each}
@@ -54,23 +57,25 @@
 
 <style lang="scss">
 	div[role='menu'] {
-		@apply fixed 
+		@apply fixed
 		inset-0 
 		z-0 
 		flex 
 		flex-col 
-		gap-8 
-		bg-simple-light 
+		gap-4
+		bg-white 
 		px-12 
 		pt-32 
-		text-xl 
-		transition-all 
-		md:relative 
+		text-black 
+		transition-all
+		duration-700
+		md:relative
 		md:flex-row;
+
 		@screen md {
-			@apply translate-x-0 bg-transparent 
-			p-0 
-			text-base 
+			@apply translate-x-0 gap-8 bg-transparent 
+			p-0
+			text-current 
 			transition-none;
 		}
 	}
