@@ -15,13 +15,13 @@
 <div class="relative group mt-4 {$$props.class}">
 	{#if label}
 		<span
-			class="label-wrapper absolute text-sm font-medium duration-300 top-[18px] left-4 transition-all flex items-center gap-2"
+			class="label-wrapper absolute text-sm font-medium duration-300 top-5 left-4 transition-all flex items-center gap-2"
 			class:has-value={value.length > 0}
 		>
 			{#if icon}
 				<Icon {icon} title={label} />
 			{/if}
-			<label class="" for={name} required={isRequired}>{label}</label>
+			<label for={name} required={isRequired}>{label}</label>
 		</span>
 	{/if}
 
