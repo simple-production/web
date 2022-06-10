@@ -14,7 +14,9 @@
 		"strict": true,
 		"target": "es2020",
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["src/*"],
+			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"]
 		}
 	}
 }

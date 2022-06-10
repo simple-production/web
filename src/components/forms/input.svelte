@@ -9,7 +9,7 @@
 	export let isRequired: boolean | null = null;
 
 	const classes =
-		'px-4 py-4 w-full bg-white/20 rounded-sm outline-none border-2 transition-all border-white/30 focus:border-white/60';
+		'px-4 py-4 w-full bg-white/20 rounded-sm outline-none border-2 transition-all border-white/20 focus:border-white/60';
 </script>
 
 <div class="relative group mt-4 {$$props.class}">

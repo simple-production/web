@@ -47,9 +47,9 @@
 			<img
 				src="/simple.webp"
 				alt="Simple Production Logo"
-				class="h-16 group-hover:-rotate-6 transition-all"
+				class="h-10 group-hover:-rotate-6 transition-all"
 			/>
-			<span class="hidden text-xl font-medium pb-2 drop-shadow-sm transition-all md:block">
+			<span class="hidden text-xl font-medium drop-shadow-sm transition-all md:block">
 				imple Production
 			</span>
 		</Link>
