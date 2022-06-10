@@ -8,6 +8,7 @@
 	<Link href={Routes.home}>
 		<img src="/simple.webp" alt="Simple Production Logo" class="h-12" />
 	</Link>
+
 	<div class="max-w-sm space-y-2 text-sm">
 		<p>
 			Simple Production is a video production company focused on helping companies and organizations

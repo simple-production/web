@@ -26,7 +26,7 @@
 		<p>
 			Our mission is to produce visual content that resonates with viewers, regardless of genre,
 			scale or platform. From creating the overall strategy, to organizing and executing the shoot,
-			to managing the multifaceted post-production process, we ensure our clients’ projects are
+			to managing the multifaceted post-production process, we ensure our clients' projects are
 			seamless from start to finish.
 		</p>
 		<p>
