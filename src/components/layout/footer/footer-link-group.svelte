@@ -6,8 +6,8 @@
 	export let links: Route[];
 </script>
 
-<ul class="text-sm space-y-2">
-	<li class="font-medium text-lg">
+<ul class="space-y-2 text-sm">
+	<li class="text-lg font-medium">
 		{#if typeof title === 'object'}
 			<Link href={title.path}>{title.label}</Link>
 		{:else}

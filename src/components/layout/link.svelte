@@ -23,14 +23,14 @@
 		@screen md {
 			&::before {
 				content: '';
-				@apply w-full scale-x-0 transition-all origin-left duration-1000;
+				@apply w-full origin-left scale-x-0 transition-all duration-1000;
 			}
 
 			&.active {
 				@apply relative;
 
 				&::before {
-					@apply h-0.5 bg-simple-light absolute -bottom-1 scale-x-100;
+					@apply absolute -bottom-1 h-0.5 scale-x-100 bg-simple-light;
 				}
 			}
 		}

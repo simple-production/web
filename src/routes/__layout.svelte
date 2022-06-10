@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import Footer from '@/components/layout/footer/footer.svelte';
 	import Loading from '@/components/layout/loading.svelte';
-	import Navbar from '@/components/layout/navbar.svelte';
+	import Navbar from '@/components/layout/navbar/navbar.svelte';
 	import PageTransition from '@/components/layout/page-transition.svelte';
 	import Meta from '@/components/meta.svelte';
 	import Routes from '@/constants/routes';

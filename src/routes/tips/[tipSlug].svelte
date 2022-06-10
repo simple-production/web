@@ -42,7 +42,7 @@
 	export let tip: Tip;
 </script>
 
-<Link href={Routes.tips} class="flex items-center text-sm gap-2 mb-4 group">
+<Link href={Routes.tips} class="group mb-4 flex items-center gap-2 text-sm">
 	<span class="block transition-all group-hover:-translate-x-1">
 		<Icon icon={FiChevronLeft} title="Back" />
 	</span>

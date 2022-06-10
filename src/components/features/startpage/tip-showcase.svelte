@@ -7,12 +7,12 @@
 </script>
 
 <div>
-	<div class="h-[460px] grid grid-cols-1 gap-4 max-w md:grid-cols-2">
+	<div class="max-w grid h-[460px] grid-cols-1 gap-4 md:grid-cols-2">
 		<Placeholder />
 		<Placeholder />
 	</div>
 
-	<div class="text-center mt-8">
+	<div class="mt-8 text-center">
 		<Button href={Routes.tips}>Check out all tips</Button>
 	</div>
 </div>

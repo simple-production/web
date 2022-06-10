@@ -27,16 +27,16 @@
 	];
 </script>
 
-<div class="hidden md:grid grid-cols-3 max-w-3xl mx-auto">
+<div class="mx-auto hidden max-w-3xl grid-cols-3 md:grid">
 	{#each contactInformation as { name, value, value2, icon, isMarked }}
 		<div
-			class="flex items-center flex-col gap-4 h-fit p-8 rounded-md"
+			class="flex h-fit flex-col items-center gap-4 rounded-md p-8"
 			class:bg-simple-light={isMarked}
 			class:text-gray-800={isMarked}
 			class:pb-4={value2}
 		>
 			<span class="text-3xl"><Icon {icon} title={name} /></span>
-			<span class="text-base max-w-[20ch] text-center">
+			<span class="max-w-[20ch] text-center text-base">
 				{value}
 				{#if value2}
 					<br />

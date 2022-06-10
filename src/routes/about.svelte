@@ -11,11 +11,10 @@
 </script>
 
 <script lang="ts">
-	// export let prop: string = '';
 </script>
 
 <div>
-	<div class="flex items-center justify-center h-[50vh]">
+	<div class="flex h-[50vh] items-center justify-center">
 		<h1 class="text-7xl font-bold md:text-9xl">
 			Creative and
 			<br />

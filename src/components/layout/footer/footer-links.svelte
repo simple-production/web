@@ -18,7 +18,7 @@
 	];
 </script>
 
-<div class="gap-12 pr-12 hidden md:flex">
+<div class="hidden gap-12 pr-12 md:flex">
 	<FooterLinkGroup title={{ label: 'Services', path: Routes.services }} links={companyRoutes} />
 	<FooterLinkGroup
 		title={{ label: 'Simple Tips', path: Routes.tips }}

@@ -10,9 +10,9 @@
 {#if isLoading}
 	<div
 		transition:fade={{ duration: 100 }}
-		class="fixed w-screen h-screen bg-black/50 inset-0 z-[999] flex flex-col items-center justify-center gap-4 text-white"
+		class="fixed inset-0 z-[999] flex h-screen w-screen flex-col items-center justify-center gap-4 bg-black/50 text-white"
 	>
-		<span class="text-4xl animate-spin block">
+		<span class="block animate-spin text-4xl">
 			<Icon icon={FiLoader} title="Loading..." />
 		</span>
 

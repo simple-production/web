@@ -12,10 +12,10 @@
 		'px-4 py-4 w-full bg-white/20 rounded-sm outline-none border-2 transition-all border-white/20 focus:border-white/60';
 </script>
 
-<div class="relative group mt-4 {$$props.class}">
+<div class="group relative mt-4 {$$props.class}">
 	{#if label}
 		<span
-			class="label-wrapper absolute text-sm font-medium duration-300 top-5 left-4 transition-all flex items-center gap-2"
+			class="label-wrapper absolute top-5 left-4 flex items-center gap-2 text-sm font-medium transition-all duration-300"
 			class:has-value={value.length > 0}
 		>
 			{#if icon}
@@ -32,7 +32,7 @@
 	{/if}
 
 	{#if isRequired != null && !value.length}
-		<span class="absolute right-4 text-xs text-white/70 top-[22px]"
+		<span class="absolute right-4 top-[22px] text-xs text-white/70"
 			>{isRequired ? 'required' : 'optional'}</span
 		>
 	{/if}

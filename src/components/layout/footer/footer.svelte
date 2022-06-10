@@ -8,7 +8,7 @@
 	export let tips: Tip[];
 </script>
 
-<footer class="pt-32 pb-12 max-w">
+<footer class="max-w pt-32 pb-12">
 	<div class="space-y-12">
 		<div class="flex justify-between">
 			<FooterInfo />
@@ -18,7 +18,7 @@
 		<FooterBottom />
 	</div>
 
-	<p class="text-right text-xs mt-2">
+	<p class="mt-2 text-right text-xs">
 		Powered by <Link class="font-semibold" href="https://axel.froborg.com">axel.froborg.com</Link>
 	</p>
 </footer>

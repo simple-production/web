@@ -11,7 +11,7 @@
 		<svelte:fragment slot="green">partners</svelte:fragment>
 	</Heading>
 
-	<div class="grid grid-cols-2 h-60 gap-8 mt-24 md:grid-cols-4">
+	<div class="mt-24 grid h-60 grid-cols-2 gap-8 md:grid-cols-4">
 		<Placeholder />
 		<Placeholder />
 		<Placeholder />
