@@ -20,7 +20,7 @@
 	});
 </script>
 
-<form on:submit={handleSubmit} class="grid grid-cols-2 gap-x-4 gap-y-8">
+<form on:submit={handleSubmit} class="grid grid-cols-2 gap-6">
 	<Input
 		label="Name"
 		name="name"
