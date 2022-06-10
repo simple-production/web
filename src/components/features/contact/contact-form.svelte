@@ -14,9 +14,12 @@
 		message: ''
 	};
 
-	const { form, handleChange, handleSubmit } = createForm({
+	const { form, isValid, handleChange, handleSubmit, errors } = createForm({
 		initialValues,
-		onSubmit: (values) => {}
+		onSubmit: (values) => {
+			console.log($errors);
+			console.log($isValid);
+		}
 	});
 </script>
 

@@ -15,7 +15,7 @@
 <div class="group relative mt-4 {$$props.class}">
 	{#if label}
 		<span
-			class="label-wrapper absolute top-5 left-4 flex items-center gap-2 text-sm font-medium transition-all duration-300"
+			class="label-wrapper pointer-events-none absolute top-5 left-4 flex items-center gap-2 text-sm font-medium transition-all duration-300"
 			class:has-value={value.length > 0}
 		>
 			{#if icon}
@@ -32,7 +32,7 @@
 	{/if}
 
 	{#if isRequired != null && !value.length}
-		<span class="absolute right-4 top-[22px] text-xs text-white/70"
+		<span class="absolute right-4 top-[22px] text-[0.7em] text-white/70"
 			>{isRequired ? 'required' : 'optional'}</span
 		>
 	{/if}
