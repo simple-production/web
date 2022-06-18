@@ -5,17 +5,25 @@ import type { Tip } from '@/models/tip';
 import type { RequestHandler } from '@sveltejs/kit';
 
 type GqlResponse = {
-	tips: Pick<Tip, 'slug'>[];
-	services: Pick<Service, 'slug'>[];
+	tips: Pick<Tip, 'slug' | 'updatedAt'>[];
+	services: Pick<Service, 'slug' | 'updatedAt'>[];
+};
+
+type SitemapPage = {
+	path: string;
+	lastModified?: string;
+	changeFreq: string;
 };
 
 const QUERY = `
 	query sitemap {
 		tips {
 			slug
+			updatedAt
 		}
 		services {
 			slug
+			updatedAt
 		}
 	}
 
@@ -33,10 +41,17 @@ const fallbackEmptyArray = async <R>(p: Promise<Response>): Promise<R[]> => {
 		});
 };
 
-const buildXml = (url: string, sites: string[]) => {
+const buildXml = (url: string, sites: SitemapPage[]) => {
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	${sites.map((site) => `<url><loc>${url}${site}</loc></url>`).join('\n')}
+	${sites
+		.map((site) => {
+			const loc = `<loc>${url}${site.path}</loc>`;
+			const lastMod = site.lastModified ? `<lastmod>${site.lastModified}</lastmod>` : '';
+			const changeFreq = `<changefreq>${site.changeFreq}</changefreq>`;
+			return `<url>${loc}${lastMod}${changeFreq}</url>`;
+		})
+		.join('\n')}
 </urlset>`;
 };
 
@@ -48,9 +63,17 @@ export const get: RequestHandler = async ({ params, url }) => {
 
 	return {
 		body: buildXml(origin, [
-			...baseUrls,
-			...tips.map((t) => Routes.tip(t.slug)),
-			...services.map((s) => Routes.service(s.slug))
+			...baseUrls.map<SitemapPage>((b) => ({ path: b, changeFreq: 'montly' })),
+			...services.map<SitemapPage>((b) => ({
+				path: Routes.service(b.slug),
+				changeFreq: 'weekly',
+				lastModified: b.updatedAt.split('T')[0]
+			})),
+			...tips.map<SitemapPage>((s) => ({
+				path: Routes.tip(s.slug),
+				changeFreq: 'weekly',
+				lastModified: s.updatedAt.split('T')[0]
+			}))
 		]),
 		headers: {
 			'Content-Type': 'text/xml'

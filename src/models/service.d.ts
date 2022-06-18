@@ -6,4 +6,5 @@ export type Service = {
 	description: string;
 	slug: string;
 	coverImage: CMSImage;
+	updatedAt: string;
 };
