@@ -2,6 +2,7 @@ import Routes from '@/constants/routes';
 import { graphQlRequest } from '@/lib/graphql';
 import type { Service } from '@/models/service';
 import type { Tip } from '@/models/tip';
+import { toDate } from '@/utils/date.util';
 import type { RequestHandler } from '@sveltejs/kit';
 
 type GqlResponse = {
@@ -64,15 +65,15 @@ export const get: RequestHandler = async ({ params, url }) => {
 	return {
 		body: buildXml(origin, [
 			...baseUrls.map<SitemapPage>((b) => ({ path: b, changeFreq: 'montly' })),
-			...services.map<SitemapPage>((b) => ({
-				path: Routes.service(b.slug),
+			...services.map<SitemapPage>((s) => ({
+				path: Routes.service(s.slug),
 				changeFreq: 'weekly',
-				lastModified: b.updatedAt.split('T')[0]
+				lastModified: toDate(s.updatedAt)
 			})),
-			...tips.map<SitemapPage>((s) => ({
-				path: Routes.tip(s.slug),
+			...tips.map<SitemapPage>((t) => ({
+				path: Routes.tip(t.slug),
 				changeFreq: 'weekly',
-				lastModified: s.updatedAt.split('T')[0]
+				lastModified: toDate(t.updatedAt)
 			}))
 		]),
 		headers: {
