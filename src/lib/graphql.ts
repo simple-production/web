@@ -5,7 +5,8 @@ export const graphQlRequest = async <
 	V extends Record<string, unknown> = Record<string, unknown>
 >(
 	query: string,
-	variables: V = {} as V
+	variables: V = {} as V,
+	takeAll: boolean = true
 ): Promise<T> => {
 	const response = await fetch(`${serverConfig.GRAPH_CMS_CONTENT_URL}`, {
 		method: 'POST',
@@ -24,6 +25,10 @@ export const graphQlRequest = async <
 	}
 
 	const json = await response.json();
+
+	if (!takeAll) {
+		return json.data;
+	}
 
 	return json.data[Object.keys(json.data)[0]];
 };

@@ -25,7 +25,7 @@
 	export let services: Service[];
 </script>
 
-<div class="space-y-24 pt-12">
+<div class="space-y-24 pt-8">
 	<div>
 		<Heading>
 			<svelte:fragment slot="black-before">What we</svelte:fragment>

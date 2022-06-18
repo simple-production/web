@@ -6,18 +6,20 @@
 	import PageTransition from '@/components/layout/page-transition.svelte';
 	import Meta from '@/components/meta.svelte';
 	import Routes from '@/constants/routes';
+	import type { Service } from '@/models/service';
 	import type { Tip } from '@/models/tip';
 	import { drawer } from '@/stores/drawer.store';
 	import '@/styles/main.scss';
 	import type { Load } from '@sveltejs/kit';
-	import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+	import { disableBodyScroll,enableBodyScroll } from 'body-scroll-lock';
 
 	export const load: Load = async ({ url, fetch }) => {
-		const tips = await fetch('/api/tips?take=3').then((res) => res.json());
+		const {tips, services} = await fetch('/api/home').then((res) => res.json());
 
 		return {
 			props: {
-				tips: tips.data,
+				tips,
+				services,
 				key: url.pathname
 			}
 		};
@@ -27,6 +29,7 @@
 <script lang="ts">
 	export let key: string;
 	export let tips: Tip[];
+	export let services: Service[];
 
 	let ref: HTMLDivElement;
 
@@ -65,7 +68,7 @@
 		</main>
 	</PageTransition>
 
-	<Footer {tips} />
+	<Footer {tips} {services} />
 </div>
 
 <style lang="scss">

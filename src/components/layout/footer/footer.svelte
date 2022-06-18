@@ -1,18 +1,20 @@
 <script lang="ts">
-	import type { Tip } from '@/models/tip';
-	import Link from '../link.svelte';
-	import FooterBottom from './footer-bottom.svelte';
-	import FooterInfo from './footer-info.svelte';
-	import FooterLinks from './footer-links.svelte';
+import type { Service } from '@/models/service';
+import type { Tip } from '@/models/tip';
+import Link from '../link.svelte';
+import FooterBottom from './footer-bottom.svelte';
+import FooterInfo from './footer-info.svelte';
+import FooterLinks from './footer-links.svelte';
 
 	export let tips: Tip[];
+	export let services: Service[];
 </script>
 
 <footer class="max-w pt-32 pb-12">
 	<div class="space-y-12">
 		<div class="flex justify-between">
 			<FooterInfo />
-			<FooterLinks {tips} />
+			<FooterLinks {tips} {services} />
 		</div>
 
 		<FooterBottom />

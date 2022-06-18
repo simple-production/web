@@ -26,11 +26,11 @@
 	</div>
 
 	<div class="space-y-24">
-		<div class="relative bg-simple-light p-8 text-white">
+		<div class="relative bg-simple-light p-12 text-white">
 			<img
 				src="/person.webp"
 				alt="Photographer"
-				class="absolute right-0 top-[-50%] hidden h-[512px] md:block xl:h-[640px]"
+				class="absolute right-0 top-[-40%] hidden h-[512px] md:block xl:h-[640px]"
 			/>
 			<Heading>
 				<svelte:fragment slot="black-before">Who we are</svelte:fragment>
