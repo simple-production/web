@@ -5,7 +5,7 @@ export const graphQlRequest = async <
 	V extends Record<string, unknown> = Record<string, unknown>
 >(
 	query: string,
-	variables: V
+	variables: V = {} as V
 ): Promise<T> => {
 	const response = await fetch(`${serverConfig.GRAPH_CMS_CONTENT_URL}`, {
 		method: 'POST',

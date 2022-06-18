@@ -1,3 +1,4 @@
+import type { CMSImage } from './cms-image';
 import type { User } from './user';
 
 export type Tip = {
@@ -8,10 +9,7 @@ export type Tip = {
 		html: string;
 		text: string;
 	};
-	coverImage: {
-		url: string;
-		mimeType: string;
-	};
+	coverImage: CMSImage;
 	likes: number;
 	isLiked: boolean;
 	publishedBy: User;
