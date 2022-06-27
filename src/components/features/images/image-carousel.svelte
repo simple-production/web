@@ -4,6 +4,7 @@
 	import type { CMSImage } from '@/models/cms-image';
 	import { onMount } from 'svelte';
 	import Portal from 'svelte-portal';
+	import { fade } from 'svelte/transition';
 
 	export let images: CMSImage[];
 	export let currentImage: number = 0;
@@ -39,7 +40,7 @@
 </script>
 
 <Portal target="[data-modal]">
-	<div class="fixed top-0 left-0 right-0 z-[99]">
+	<div class="fixed top-0 left-0 right-0 z-[99]" transition:fade={{ duration: 300 }}>
 		<div class="absolute inset-0 bg-black/80" on:click={handleClose} />
 
 		<button
@@ -58,7 +59,7 @@
 						class="flex h-full w-full flex-shrink-0 items-center justify-center transition-all"
 						style="transform: translate(-{currentImage * 100}%);"
 					>
-						<Visual {...image} alt="Image" lazyLoad class="max-h-[90%] max-w-[90%] object-cover" />
+						<Visual {...image} alt="Image" class="max-h-[90%] max-w-[90%] object-cover" />
 					</div>
 				{/each}
 			</div>
