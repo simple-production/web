@@ -41,7 +41,7 @@
 
 <Portal target="[data-modal]">
 	<div class="fixed top-0 left-0 right-0 z-[99]" transition:fade={{ duration: 300 }}>
-		<div class="absolute inset-0 bg-black/80" on:click={handleClose} />
+		<div class="absolute inset-0 bg-black/90" on:click={handleClose} />
 
 		<button
 			on:click={handleClose}
