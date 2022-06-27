@@ -12,10 +12,10 @@
 		<svelte:fragment slot="green">partners</svelte:fragment>
 	</Heading>
 
-	<div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
+	<div class="mt-12 grid grid-cols-2 gap-16 md:grid-cols-3">
 		{#each partners as partner}
 			<div class="h-60">
-				<Visual {...partner.logo} alt={partner.name} class="h-full w-full object-contain" />
+				<Visual {...partner.logo} alt={partner.name} class="h-full w-full object-contain p-4" />
 			</div>
 		{/each}
 	</div>

@@ -21,7 +21,7 @@
 </script>
 
 <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
-	<Heading class="col-span-full">
+	<Heading class="col-span-full mb-4">
 		<svelte:fragment slot="black-before">Images</svelte:fragment>
 	</Heading>
 

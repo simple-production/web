@@ -10,7 +10,7 @@ type Response = {
 
 const QUERY = `
 query homeQuery {
-	partners(first: 4) {
+	partners(first: 3) {
 	  name
 	  logo {
 		url
