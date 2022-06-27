@@ -10,10 +10,15 @@ const SERVICE_QUERY = `
 			description
 			slug
 			coverImage {
-			  url
+			  url(transformation:{document:{output:{format:webp}}})
 			  mimeType
 			}
-		  }
+			images {
+				modifiedUrl: url(transformation:{document:{output:{format:webp}},image:{resize:{width:500}}})
+				url
+				mimeType
+			}
+		}
 	}
 `;
 

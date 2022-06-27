@@ -11,7 +11,7 @@
 		<slot />
 	</a>
 {:else}
-	<button class={classNames} type={isSubmit ? 'submit' : 'button'}>
+	<button class={classNames} type={isSubmit ? 'submit' : 'button'} on:click>
 		<slot />
 	</button>
 {/if}

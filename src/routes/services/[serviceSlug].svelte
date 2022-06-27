@@ -1,14 +1,18 @@
 <script lang="ts" context="module">
+	import { goto } from '$app/navigation';
+	import ServiceImagesList from '@/components/features/services/service-images-list.svelte';
 	import Icon from '@/components/icons/icon.svelte';
 	import Link from '@/components/layout/link.svelte';
 	import Heading from '@/components/typography/heading.svelte';
 	import Routes from '@/constants/routes';
 	import type { Service } from '@/models/service';
+	import { tryParseInt } from '@/utils/number.util';
 	import type { Load } from '@sveltejs/kit';
 	import FiChevronLeft from 'svelte-icons-pack/fi/FiChevronLeft';
 
-	export const load: Load = async ({ params, fetch }) => {
+	export const load: Load = async ({ params, fetch, url }) => {
 		const { serviceSlug } = params;
+		const imagesPage = tryParseInt(url.searchParams.get('images-page'), 1);
 
 		try {
 			const response: Service = await fetch(`/api/services/${serviceSlug}`).then((res) =>
@@ -17,7 +21,8 @@
 
 			return {
 				props: {
-					service: response
+					service: response,
+					imagesPage
 				},
 				stuff: {
 					title: response.name,
@@ -34,8 +39,18 @@
 </script>
 
 <script lang="ts">
-
 	export let service: Service;
+	export let imagesPage: number;
+
+	const loadMoreImages = (e: CustomEvent<number>) => {
+		const { detail } = e;
+		console.log(detail);
+
+		goto(`${Routes.service(service.slug)}?images-page=${detail}`, {
+			noscroll: true,
+			keepfocus: true
+		});
+	};
 
 	$: firstWord = service.name.split(' ')[0];
 	$: rest = service.name.split(' ').slice(1).join(' ');
@@ -58,12 +73,14 @@
 		<p class="max-w-md">{service.description}</p>
 	</div>
 
+	{#if service.images?.length}
+		<ServiceImagesList images={service.images} on:load-more={loadMoreImages} page={imagesPage} />
+	{/if}
+
 	<div class="grid grid-cols-1 md:grid-cols-3">
 		<Heading class="col-span-full">
 			<svelte:fragment slot="black-before">Cases</svelte:fragment>
 		</Heading>
-
-		
 	</div>
 </div>
 
