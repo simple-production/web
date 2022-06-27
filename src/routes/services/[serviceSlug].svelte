@@ -44,7 +44,6 @@
 
 	const loadMoreImages = (e: CustomEvent<number>) => {
 		const { detail } = e;
-		console.log(detail);
 
 		goto(`${Routes.service(service.slug)}?images-page=${detail}`, {
 			noscroll: true,
