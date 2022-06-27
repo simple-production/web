@@ -50,8 +50,10 @@
 			&times;
 		</button>
 
-		<div class="flex h-screen w-screen flex-wrap items-center p-12">
-			<Button type="secondary" on:click={prevImage}>Prev</Button>
+		<div data-images class="grid h-screen w-screen items-center px-4 py-12 md:p-12">
+			<span>
+				<Button type="secondary" on:click={prevImage}>Prev</Button>
+			</span>
 
 			<div class="flex h-full flex-1 overflow-hidden">
 				{#each images as image}
@@ -64,10 +66,39 @@
 				{/each}
 			</div>
 
-			<Button type="secondary" on:click={nextImage}>Next</Button>
+			<span>
+				<Button type="secondary" on:click={nextImage}>Next</Button>
+			</span>
 		</div>
 	</div>
 </Portal>
 
 <style lang="scss">
+	[data-images] {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr auto;
+		grid-template-areas: 'image image' 'prev-button next-button';
+
+		span {
+			align-self: center;
+			justify-self: center;
+		}
+
+		@screen md {
+			grid-template-columns: auto 1fr auto;
+			grid-template-areas: 'prev-button image next-button';
+		}
+
+		span:first-child {
+			grid-area: prev-button;
+		}
+
+		span:last-child {
+			grid-area: next-button;
+		}
+
+		> div {
+			grid-area: image;
+		}
+	}
 </style>
