@@ -15,7 +15,7 @@
 	<div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
 		{#each partners as partner}
 			<div class="h-60">
-				<Visual {...partner.logo} alt={partner.name} class="h-full w-full object-cover p-4" />
+				<Visual {...partner.logo} alt={partner.name} class="h-full w-full object-contain" />
 			</div>
 		{/each}
 	</div>
