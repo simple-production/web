@@ -30,18 +30,6 @@ const QUERY = `
 
 `;
 
-const fallbackEmptyArray = async <R>(p: Promise<Response>): Promise<R[]> => {
-	return p
-		.then((res) => {
-			console.log(res);
-			return res.json();
-		})
-		.catch((err) => {
-			console.log(err);
-			return [];
-		});
-};
-
 const buildXml = (url: string, sites: SitemapPage[]) => {
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

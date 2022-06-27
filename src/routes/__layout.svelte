@@ -35,7 +35,6 @@
 	let ref: HTMLDivElement;
 
 	const updateBodyScrollLock = (allowBodyScroll: boolean) => {
-		console.log(ref);
 		if (!ref) {
 			return;
 		}
