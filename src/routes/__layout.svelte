@@ -11,10 +11,10 @@
 	import { drawer } from '@/stores/drawer.store';
 	import '@/styles/main.scss';
 	import type { Load } from '@sveltejs/kit';
-	import { disableBodyScroll,enableBodyScroll } from 'body-scroll-lock';
+	import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 	export const load: Load = async ({ url, fetch }) => {
-		const {tips, services} = await fetch('/api/home').then((res) => res.json());
+		const { tips, services } = await fetch('/api/layout').then((res) => res.json());
 
 		return {
 			props: {

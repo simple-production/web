@@ -77,11 +77,13 @@
 		<ServiceImagesList images={service.images} on:load-more={loadMoreImages} page={imagesPage} />
 	{/if}
 
-	<div class="grid grid-cols-1 md:grid-cols-3">
-		<Heading class="col-span-full">
-			<svelte:fragment slot="black-before">Cases</svelte:fragment>
-		</Heading>
-	</div>
+	{#if service.cases?.length}
+		<div class="grid grid-cols-1 md:grid-cols-3">
+			<Heading class="col-span-full">
+				<svelte:fragment slot="black-before">Cases</svelte:fragment>
+			</Heading>
+		</div>
+	{/if}
 </div>
 
 <style lang="scss">

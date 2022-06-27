@@ -18,6 +18,21 @@ const SERVICE_QUERY = `
 				url
 				mimeType
 			}
+			cases {
+				title
+				description {
+					html
+					text
+				}
+				partner {
+					name
+					logo {
+						url
+						mimeType
+					}
+				}
+
+			}
 		}
 	}
 `;
