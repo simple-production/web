@@ -50,7 +50,7 @@
 		<Icon icon={!$drawer ? FiMenu : FiX} title="Menu" />
 	</button>
 
-	<div role="menu" class:translate-x-full={!$drawer} class:translate-x-0={$drawer}>
+	<nav class:translate-x-full={!$drawer} class:translate-x-0={$drawer}>
 		{#each routes as { path, label }}
 			{@const isActive = path === $page.url.pathname || $page.url.pathname.startsWith(path)}
 			<Link class="transition-all" href={path} {isActive} on:click={closeMenu}>
@@ -68,11 +68,11 @@
 				{/each}
 			</div>
 		</div>
-	</div>
+	</nav>
 </div>
 
 <style lang="scss">
-	div[role='menu'] {
+	nav {
 		@apply fixed
 		inset-0 
 		z-0 

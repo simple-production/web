@@ -11,11 +11,11 @@
 <div>
 	<div class="max-w grid grid-cols-1 gap-4 md:grid-cols-2">
 		{#each tips as tip}
-			<Link href={Routes.tip(tip.slug)} class="relative h-[480px]">
+			<Link href={Routes.tip(tip.slug)} class="relative h-[480px] overflow-hidden">
 				<Visual
 					{...tip.coverImage}
 					alt={tip.title}
-					class="h-full w-full object-cover"
+					class="h-full w-full object-cover transition-all hover:scale-[1.02]"
 					lazyLoad
 					autoplay
 					loop
