@@ -16,6 +16,7 @@
 					{...tip.coverImage}
 					alt={tip.title}
 					class="h-full w-full object-cover"
+					lazyLoad
 					autoplay
 					loop
 				/>
