@@ -1,5 +1,4 @@
 import type { Handle } from '@sveltejs/kit';
-import { parse } from 'cookie';
 import { nanoid } from 'nanoid';
 import { getFingerprint } from './utils/request.util';
 
