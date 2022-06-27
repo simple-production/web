@@ -1,12 +1,15 @@
 <script>
+	import SimpleIcon from '@/components/icons/simple-icon.svelte';
 	import Routes from '@/constants/routes';
 	import Link from '../link.svelte';
-	const simpleGroupUrl = 'https://www.simplegroup.se/';
+								const simpleGroupUrl = 'https://www.simplegroup.se/';
 </script>
 
-<div class="space-y-8">
+<div class="space-y-12">
 	<Link href={Routes.home}>
-		<img src="/simple.webp" alt="Simple Production Logo" class="h-12" />
+		<div class="h-8 aspect-square">
+		<SimpleIcon />
+	</div>
 	</Link>
 
 	<div class="max-w-sm space-y-2 text-sm">
