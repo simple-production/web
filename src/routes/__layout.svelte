@@ -8,6 +8,7 @@
 	import Routes from '@/constants/routes';
 	import type { Service } from '@/models/service';
 	import type { Tip } from '@/models/tip';
+	import { bodyScroll } from '@/stores/bodyscroll.store';
 	import { drawer } from '@/stores/drawer.store';
 	import '@/styles/main.scss';
 	import type { Load } from '@sveltejs/kit';
@@ -33,19 +34,21 @@
 
 	let ref: HTMLDivElement;
 
-	const updateBodyScrollLock = (drawerOpen: boolean) => {
+	const updateBodyScrollLock = (allowBodyScroll: boolean) => {
+		console.log(ref);
 		if (!ref) {
 			return;
 		}
 
-		if (drawerOpen) {
+		if (!allowBodyScroll) {
 			disableBodyScroll(ref);
 		} else {
 			enableBodyScroll(ref);
 		}
 	};
 
-	$: updateBodyScrollLock($drawer);
+	$: $bodyScroll = !$drawer;
+	$: updateBodyScrollLock($bodyScroll);
 	$: isRoot = $page.url.pathname === Routes.home;
 	$: isContact = $page.url.pathname === Routes.contact;
 </script>
@@ -70,6 +73,8 @@
 
 	<Footer {tips} {services} />
 </div>
+
+<div data-modal />
 
 <style lang="scss">
 </style>

@@ -5,11 +5,11 @@
 </script>
 
 {#if href}
-	<a {href} class="inline-block {type}">
+	<a {href} class="inline-block {type} {$$props.class}">
 		<slot />
 	</a>
 {:else}
-	<button class={type} type={isSubmit ? 'submit' : 'button'} on:click>
+	<button class="{type} {$$props.class}" type={isSubmit ? 'submit' : 'button'} on:click>
 		<slot />
 	</button>
 {/if}

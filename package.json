@@ -38,6 +38,7 @@
 		"dotenv": "^16.0.1",
 		"nanoid": "^4.0.0",
 		"svelte-forms-lib": "^2.0.1",
-		"svelte-icons-pack": "^1.4.6"
+		"svelte-icons-pack": "^1.4.6",
+		"svelte-portal": "^2.2.0"
 	}
 }

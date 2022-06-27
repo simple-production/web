@@ -6,6 +6,7 @@
 	export let mimeType: string;
 	export let autoplay: boolean = false;
 	export let loop: boolean = false;
+	export let lazyLoad: boolean = false;
 
 	let videoRef: HTMLVideoElement;
 
@@ -34,7 +35,7 @@
 </script>
 
 {#if !isVideo}
-	<img src={url} {alt} class={$$props.class} />
+	<img src={url} {alt} class={$$props.class} loading={lazyLoad ? 'lazy' : 'eager'} />
 {:else}
 	<video
 		muted
