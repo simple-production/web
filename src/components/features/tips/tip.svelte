@@ -48,18 +48,48 @@
 			likes--;
 		}
 	};
+
+	const buildLdJson = () => {
+		const ldJson = {
+			'@context': 'http://schema.org',
+			'@type': 'Article',
+			headline: title,
+			image: coverImage.url,
+			datePublished: toDate(updatedAt),
+			dateModified: toDate(updatedAt),
+			keywords: ['Simple', 'Production', 'Simple Production', 'Lund', 'Photo', 'Video'].join(','),
+			author: {
+				'@type': 'Person',
+				name: createdBy.name,
+				logo: createdBy.picture
+			},
+			publisher: {
+				'@type': 'Person',
+				name: createdBy.name,
+				logo: createdBy.picture
+			},
+			description: content.text,
+			mainEntityOfPage: $page.url.origin
+		};
+
+		return `<script type="application/ld+json">${JSON.stringify(ldJson)}${'<'}/script>`;
+	};
 </script>
 
+<svelte:head>
+	{@html buildLdJson()}
+</svelte:head>
+
 <div class="space-y-8">
-	<div class="flex justify-between items-start">
+	<div class="flex items-start justify-between">
 		<div>
 			<h3 class="text-2xl">{title}</h3>
-			<div class="text-sm flex gap-2">
-				<span>{toDate(updatedAt)}</span>
+			<div class="flex gap-2 text-sm">
+				<span data-article-updated-at>{toDate(updatedAt)}</span>
 
 				<span>•</span>
 
-				<span>{createdBy.name}</span>
+				<span data-article-user>{createdBy.name}</span>
 			</div>
 		</div>
 
@@ -72,7 +102,7 @@
 
 			<div class="flex items-center gap-2">
 				{#if likes > 0}
-					<span class="text-sm">{likes}</span>
+					<span class="text-sm" data-article-likes>{likes}</span>
 				{/if}
 
 				<button class="" class:text-red-400={isLiked} on:click={handleLike}>
@@ -85,7 +115,7 @@
 	<Visual
 		{...coverImage}
 		alt={title}
-		class="max-h-[50vh] w-full object-cover object-center rounded-sm"
+		class="max-h-[50vh] w-full rounded-sm object-cover object-center"
 		loop
 		autoplay
 	/>

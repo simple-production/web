@@ -4,7 +4,7 @@
 	import type { Service } from '@/models/service';
 	import type { Tip } from '@/models/tip';
 	import FooterLinkGroup from './footer-link-group.svelte';
-	
+
 	export let tips: Tip[];
 	export let services: Service[];
 
@@ -27,10 +27,7 @@
 	/>
 	<FooterLinkGroup
 		title={{ label: 'Simple Tips', path: Routes.tips }}
-		links={[
-			...tips.map((t) => ({ label: t.title, path: Routes.tip(t.slug) })),
-			{ label: 'View all', path: Routes.tips }
-		]}
+		links={tips.map((t) => ({ label: t.title, path: Routes.tip(t.slug) }))}
 	/>
 	<FooterLinkGroup title="Company" links={companyRoutes} />
 </div>
