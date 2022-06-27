@@ -22,12 +22,12 @@
 	$: href = Routes.tip(slug);
 </script>
 
-<Link {href} class="block space-y-4 group">
-	<div class="overflow-hidden max-h-[60vh] rounded-sm">
+<Link {href} class="group block space-y-4">
+	<div class="max-h-[60vh] overflow-hidden rounded-sm">
 		<Visual
 			{...coverImage}
 			alt={title}
-			class="w-full h-full object-center object-cover group-hover:scale-[1.05] transition-all duration-500"
+			class="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-[1.05]"
 			autoplay
 			loop
 		/>
