@@ -38,7 +38,6 @@
 		transform: translate3d(var(--translate), 0);
 
 		box-shadow: var(--box-shadow);
-		border: 1px solid var(--shadow-color);
 
 		@apply relative px-8 py-3 font-semibold transition-all;
 
