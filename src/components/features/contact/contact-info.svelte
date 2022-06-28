@@ -21,7 +21,7 @@
 		{
 			name: 'Phone',
 			icon: FiPhone,
-			value: '123-456-7890',
+			value: '0766 333 263',
 			isMarked: false
 		}
 	];
