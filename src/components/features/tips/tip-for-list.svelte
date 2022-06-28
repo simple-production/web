@@ -3,13 +3,13 @@
 	import Link from '@/components/layout/link.svelte';
 	import Visual from '@/components/layout/visual.svelte';
 	import Routes from '@/constants/routes';
-	import type { Tip } from '@/models/tip';
+	import type { DirectusFile } from '@/models/cms/file';
 	import AiFillHeart from 'svelte-icons-pack/ai/AiFillHeart';
 	import AiOutlineHeart from 'svelte-icons-pack/ai/AiOutlineHeart';
 
 	export let title: string;
 	export let slug: string;
-	export let coverImage: Tip['coverImage'];
+	export let coverImage: DirectusFile;
 	export let isLiked: boolean;
 
 	const handleLike = async () => {
@@ -25,7 +25,8 @@
 <Link {href} class="group block space-y-4">
 	<div class="max-h-[60vh] overflow-hidden rounded-sm">
 		<Visual
-			{...coverImage}
+			url={Routes.asset(coverImage.id)}
+			mimeType={coverImage.type}
 			alt={title}
 			class="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-[1.05]"
 			autoplay

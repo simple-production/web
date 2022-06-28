@@ -1,9 +1,10 @@
 <script lang="ts">
 	import Visual from '@/components/layout/visual.svelte';
 	import Heading from '@/components/typography/heading.svelte';
-	import type { Partner } from '@/models/partner';
+	import Routes from '@/constants/routes';
+	import type { HomeResponsePartner } from '@/models/api/home-response';
 
-	export let partners: Partner[];
+	export let partners: HomeResponsePartner[];
 </script>
 
 <div class="max-w text-center">
@@ -15,7 +16,12 @@
 	<div class="mt-12 grid grid-cols-2 gap-16 md:grid-cols-3">
 		{#each partners as partner}
 			<div class="h-60">
-				<Visual {...partner.logo} alt={partner.name} class="h-full w-full object-contain p-4" />
+				<Visual
+					url={Routes.asset(partner.logo.id)}
+					mimeType={partner.logo.type}
+					alt={partner.name}
+					class="h-full w-full object-contain p-4"
+				/>
 			</div>
 		{/each}
 	</div>

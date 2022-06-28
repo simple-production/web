@@ -5,7 +5,7 @@
 	import Link from '@/components/layout/link.svelte';
 	import Heading from '@/components/typography/heading.svelte';
 	import Routes from '@/constants/routes';
-	import type { Service } from '@/models/service';
+	import type { ServiceResponse } from '@/models/api/services-response';
 	import { tryParseInt } from '@/utils/number.util';
 	import type { Load } from '@sveltejs/kit';
 	import FiChevronLeft from 'svelte-icons-pack/fi/FiChevronLeft';
@@ -15,7 +15,7 @@
 		const imagesPage = tryParseInt(url.searchParams.get('images-page'), 1);
 
 		try {
-			const response: Service = await fetch(`/api/services/${serviceSlug}`).then((res) =>
+			const response: ServiceResponse = await fetch(`/api/services/${serviceSlug}`).then((res) =>
 				res.json()
 			);
 
@@ -39,7 +39,7 @@
 </script>
 
 <script lang="ts">
-	export let service: Service;
+	export let service: ServiceResponse;
 	export let imagesPage: number;
 
 	const loadMoreImages = (e: CustomEvent<number>) => {
@@ -69,20 +69,20 @@
 			<svelte:fragment slot="black-after">{rest.toLowerCase()}</svelte:fragment>
 		</Heading>
 
-		<p class="max-w-xl">{service.description}</p>
+		<p class="wysiwyg max-w-xl">{@html service.description}</p>
 	</div>
 
 	{#if service.images?.length}
 		<ServiceImagesList images={service.images} on:load-more={loadMoreImages} page={imagesPage} />
 	{/if}
 
-	{#if service.cases?.length}
+	<!-- {#if service.cases?.length}
 		<div class="grid grid-cols-1 md:grid-cols-3">
 			<Heading class="col-span-full">
 				<svelte:fragment slot="black-before">Cases</svelte:fragment>
 			</Heading>
 		</div>
-	{/if}
+	{/if} -->
 </div>
 
 <style lang="scss">

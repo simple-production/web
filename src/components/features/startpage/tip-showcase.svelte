@@ -3,9 +3,9 @@
 	import Link from '@/components/layout/link.svelte';
 	import Visual from '@/components/layout/visual.svelte';
 	import Routes from '@/constants/routes';
-	import type { Tip } from '@/models/tip';
+	import type { HomeResponseTip } from '@/models/api/home-response';
 
-	export let tips: Tip[];
+	export let tips: HomeResponseTip[];
 </script>
 
 <div>
@@ -13,7 +13,8 @@
 		{#each tips as tip}
 			<Link href={Routes.tip(tip.slug)} class="relative h-[480px] overflow-hidden">
 				<Visual
-					{...tip.coverImage}
+					url={Routes.asset(tip.coverImage.id)}
+					mimeType={tip.coverImage.type}
 					alt={tip.title}
 					class="h-full w-full object-cover transition-all hover:scale-[1.02]"
 					lazyLoad

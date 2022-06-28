@@ -1,36 +1,30 @@
-import { graphQlRequest } from '@/lib/graphql';
-import type { Partner } from '@/models/partner';
-import type { Tip } from '@/models/tip';
+import { cmsGraphQLRequest } from '@/lib/graphql';
+import type { HomeResponse } from '@/models/api/home-response';
 import type { RequestHandler } from '@sveltejs/kit';
 
-type Response = {
-	partners: Partner[];
-	tips: Tip[];
-};
-
 const QUERY = `
-query homeQuery {
-	partners(first: 3) {
+query Query {
+	partners(limit: 3) {
 	  name
+	  url
 	  logo {
-		url
-		mimeType
+		id
+		type
 	  }
-	  slug
 	}
-	tips(first:2) {
+	tips(limit: 2) {
 	  title
 	  slug
-	  coverImage{
-		mimeType
-		url
+	  coverImage {
+		id
+		type
 	  }
 	}
-}
+  }
 `;
 
-export const get: RequestHandler = async () => {
-	const response = await graphQlRequest<Response>(QUERY, {}, false);
+export const get: RequestHandler<{}, HomeResponse> = async () => {
+	const response = await cmsGraphQLRequest<HomeResponse>(QUERY, {}, false);
 
 	return {
 		body: response,

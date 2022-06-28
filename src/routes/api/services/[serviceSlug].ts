@@ -1,7 +1,11 @@
-import { graphQlRequest } from '@/lib/graphql';
-import type { Service } from '@/models/service';
+import { cmsGraphQLRequest } from '@/lib/graphql';
+import type { ServiceGraphQLResponse, ServiceResponse } from '@/models/api/services-response';
 import { tryParseInt } from '@/utils/number.util';
 import type { RequestHandler } from '@sveltejs/kit';
+
+type Params = {
+	serviceSlug: string;
+};
 
 type Variables = {
 	slug: string;
@@ -9,55 +13,55 @@ type Variables = {
 };
 
 const SERVICE_QUERY = `
-	query getService($slug: String!, $takeImages: Int) {
-		service(where:{slug: $slug}) {
+query Query($slug: String!) {
+	services(filter: {slug:{_eq: $slug}}) {
+	  id
+	  name
+	  description
+	  slug
+	  coverImage {
+		 id
+		 type
+	  }
+	  images {
+		directus_files_id {
 			id
-			name
-			description
-			slug
-			coverImage {
-			  url(transformation:{document:{output:{format:webp}}})
-			  mimeType
-			}
-			images(first: $takeImages) {
-				modifiedUrl: url(transformation:{document:{output:{format:webp}},image:{resize:{width:500}}})
-				url
-				mimeType
-			}
-			cases {
-				title
-				description {
-					html
-					text
-				}
-				partner {
-					name
-					logo {
-						url
-						mimeType
-					}
-				}
-
-			}
+			type
+		  }
 		}
 	}
+  }
 `;
 
-export const get: RequestHandler = async ({ params, url }) => {
+const mapImages = (service: ServiceGraphQLResponse): ServiceResponse => {
+	const { images } = service;
+
+	return {
+		...service,
+		images: images.map((i) => i.directus_files_id)
+	};
+};
+
+export const get: RequestHandler<Params, ServiceResponse | string> = async ({ params, url }) => {
 	const { serviceSlug } = params;
+
 	const imagesPage = tryParseInt(url.searchParams.get('images-page'), 0);
 
 	const v: Variables = {
 		slug: serviceSlug
 	};
 
-	if (imagesPage) {
-		v.takeImages = imagesPage * 9;
+	const response = await cmsGraphQLRequest<ServiceGraphQLResponse[], Variables>(SERVICE_QUERY, v);
+	const service = response.at(0);
+
+	if (!service) {
+		return {
+			status: 404,
+			body: 'Service not found'
+		};
 	}
 
-	const response = await graphQlRequest<Service, Variables>(SERVICE_QUERY, v);
-
 	return {
-		body: response
+		body: mapImages(service)
 	};
 };

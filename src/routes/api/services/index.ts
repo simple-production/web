@@ -1,5 +1,5 @@
-import { graphQlRequest } from '@/lib/graphql';
-import type { Service } from '@/models/service';
+import { cmsGraphQLRequest } from '@/lib/graphql';
+import type { ServicesResponse } from '@/models/api/services-response';
 import type { RequestHandler } from '@sveltejs/kit';
 
 const SERVICES_QUERY = `
@@ -10,15 +10,15 @@ const SERVICES_QUERY = `
 			description
 			slug
 			coverImage {
-			  url
-			  mimeType
+			  id
+			  type
 			}
 		  }
 	}
 `;
 
-export const get: RequestHandler = async () => {
-	const response = await graphQlRequest<Service[]>(SERVICES_QUERY);
+export const get: RequestHandler<{}, ServicesResponse> = async () => {
+	const response = await cmsGraphQLRequest<ServicesResponse>(SERVICES_QUERY);
 
 	return {
 		body: response

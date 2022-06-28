@@ -7,4 +7,6 @@ export default class Routes {
 
 	public static readonly tip = (slug: string) => `${this.tips}/${slug}`;
 	public static readonly service = (slug: string) => `${this.services}/${slug}`;
+
+	public static readonly asset = (id: string) => `/assets/${id}`;
 }
