@@ -16,9 +16,16 @@
 
 	const { form, isValid, handleChange, handleSubmit, errors } = createForm({
 		initialValues,
-		onSubmit: (values) => {
-			console.log($errors);
-			console.log($isValid);
+		onSubmit: async (values) => {
+			const response = await fetch('/api/email/send', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(values)
+			});
+
+			console.log(response);
 		}
 	});
 </script>
