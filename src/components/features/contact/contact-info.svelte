@@ -4,44 +4,42 @@
 	import FiMapPin from 'svelte-icons-pack/fi/FiMapPin';
 	import FiPhone from 'svelte-icons-pack/fi/FiPhone';
 
+	export let email: string;
+	export let phone: string;
+	export let address: string;
+
 	const contactInformation = [
 		{
 			name: 'Address',
 			icon: FiMapPin,
-			value: 'Källby Ängaväg 10',
-			value2: ' 222 71 Lund',
+			value: address,
 			isMarked: false
 		},
 		{
 			name: 'Email',
 			icon: FiMail,
-			value: 'lukas@simplegroup.se',
+			value: email,
 			isMarked: true
 		},
 		{
 			name: 'Phone',
 			icon: FiPhone,
-			value: '0766 333 263',
+			value: phone,
 			isMarked: false
 		}
 	];
 </script>
 
 <div class="mx-auto hidden max-w-3xl grid-cols-3 md:grid">
-	{#each contactInformation as { name, value, value2, icon, isMarked }}
+	{#each contactInformation as { name, value, icon, isMarked }}
 		<div
 			class="flex h-fit flex-col items-center gap-4 rounded-md p-8"
 			class:bg-simple-light={isMarked}
 			class:text-gray-800={isMarked}
-			class:pb-4={value2}
 		>
 			<span class="text-3xl"><Icon {icon} title={name} /></span>
 			<span class="max-w-[20ch] text-center text-base">
-				{value}
-				{#if value2}
-					<br />
-					{value2}
-				{/if}
+				{@html value}
 			</span>
 		</div>
 	{/each}

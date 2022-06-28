@@ -1,6 +1,9 @@
 <script lang="ts" context="module">
-	export const load: Load = () => {
+	export const load: Load = async ({ fetch }) => {
+		const response = await fetch('/api/contact').then((res) => res.json());
+
 		return {
+			props: response,
 			stuff: {
 				title: 'Contact'
 			}
@@ -13,6 +16,10 @@
 	import ContactInfo from '@/components/features/contact/contact-info.svelte';
 	import Heading from '@/components/typography/heading.svelte';
 	import type { Load } from '@sveltejs/kit';
+
+	export let email: string;
+	export let address: string;
+	export let phone: string;
 </script>
 
 <div class="space-y-12">
@@ -21,7 +28,7 @@
 		<svelte:fragment slot="green">touch</svelte:fragment>
 	</Heading>
 
-	<ContactInfo />
+	<ContactInfo {email} {address} {phone} />
 
 	<ContactForm />
 </div>
