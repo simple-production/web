@@ -69,7 +69,7 @@
 			<svelte:fragment slot="black-after">{rest.toLowerCase()}</svelte:fragment>
 		</Heading>
 
-		<p class="max-w-md">{service.description}</p>
+		<p class="max-w-xl">{service.description}</p>
 	</div>
 
 	{#if service.images?.length}
