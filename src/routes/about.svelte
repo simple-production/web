@@ -26,11 +26,11 @@
 	</div>
 
 	<div class="space-y-24">
-		<div class="relative bg-simple-light p-12 text-white">
+		<div class="bg-simple-light relative p-12 text-white">
 			<img
 				src="/person.webp"
 				alt="Photographer"
-				class="absolute right-0 top-[-40%] hidden h-[512px] md:block xl:h-[640px]"
+				class="absolute right-0 top-[-80%] hidden h-[512px] md:block xl:h-[640px]"
 			/>
 			<Heading>
 				<svelte:fragment slot="black-before">Who we are</svelte:fragment>
@@ -38,16 +38,10 @@
 
 			<div class="mt-2 max-w-md space-y-4">
 				<p>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo exercitationem repellat
-					blanditiis nisi veniam dolore, accusantium unde eveniet! Mollitia vel eligendi dicta optio
-					quos praesentium fuga, dolor repellendus doloribus officiis facilis commodi libero eveniet
-					quisquam necessitatibus, eum quod eaque repellat iure consectetur delectus ex. Quis facere
-					quam hic saepe laboriosam!
-				</p>
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio ab eveniet
-					consequatur nisi rerum eos porro ipsa, fuga repellat neque nobis soluta culpa dolores a
-					suscipit, laborum corrupti excepturi nihil.
+					Simple Production is a collection of creative individuals that love creating content. With
+					focus on ROI for our customers we always try to challenge our clients to step out the
+					comfort zone and create content that actually makes an impact. We like to grow with our
+					customers, which means that your success is our success.
 				</p>
 			</div>
 		</div>
