@@ -22,9 +22,17 @@ export const post: RequestHandler = async ({ request }) => {
 
 	const mailer = new Mailer();
 
-	const response = await mailer.send(body.email, emailTemplate(body));
+	try {
+		const response = await mailer.send(body.email, emailTemplate(body));
 
-	return {
-		body: response
-	};
+		return {
+			status: 201,
+			body: 'Message was sent'
+		};
+	} catch {
+		return {
+			body: 'Message could not be sent',
+			status: 500
+		};
+	}
 };
