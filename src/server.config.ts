@@ -8,8 +8,6 @@ export const serverConfig = {
 		URL: (process.env.CMS_URL as string) ?? '',
 		ACCESS_TOKEN: (process.env.CMS_ACCESS_TOKEN as string) ?? ''
 	},
-	GRAPH_CMS_API_TOKEN: (process.env.GRAPHCMS_API_TOKEN as string) ?? '',
-	GRAPH_CMS_CONTENT_URL: (process.env.GRAPHCMS_CONTENT_URL as string) ?? '',
 	SMTP: {
 		USERNAME: (process.env.SMTP_USERNAME as string) ?? '',
 		PASSWORD: (process.env.SMTP_PASSWORD as string) ?? '',

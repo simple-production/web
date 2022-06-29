@@ -16,7 +16,7 @@
 	class:md:flex-row-reverse={idx % 2 === 0}
 >
 	<Visual
-		url={Routes.asset(coverImage.id)}
+		url={Routes.asset(coverImage.id, { width: 1200 })}
 		mimeType={coverImage.type}
 		alt={name}
 		class="max-h-[35vh] flex-1 object-cover"

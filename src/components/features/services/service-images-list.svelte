@@ -35,7 +35,7 @@
 	{#each images.slice(0, imagesShown) as { type, id }, i}
 		<button on:click={setCurrentIndex(i)} class="overflow-hidden">
 			<Visual
-				url={Routes.asset(id)}
+				url={Routes.asset(id, { width: 500 })}
 				mimeType={type}
 				alt="Image {i}"
 				class="h-full w-full object-cover transition-all hover:scale-[1.02] hover:saturate-150"

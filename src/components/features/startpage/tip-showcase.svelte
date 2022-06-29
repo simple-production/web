@@ -13,7 +13,7 @@
 		{#each tips as tip}
 			<Link href={Routes.tip(tip.slug)} class="relative h-[480px] overflow-hidden">
 				<Visual
-					url={Routes.asset(tip.coverImage.id)}
+					url={Routes.asset(tip.coverImage.id, { width: 1444 })}
 					mimeType={tip.coverImage.type}
 					alt={tip.title}
 					class="h-full w-full object-cover transition-all hover:scale-[1.02]"

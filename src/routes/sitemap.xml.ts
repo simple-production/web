@@ -1,13 +1,13 @@
 import Routes from '@/constants/routes';
-import { graphQlRequest } from '@/lib/graphql';
-import type { Service } from '@/models/service';
-import type { Tip } from '@/models/tip';
+import { cmsGraphQLRequest } from '@/lib/graphql';
+import type { DirectusService } from '@/models/cms/service';
+import type { DirectusTip } from '@/models/cms/tip';
 import { toDate } from '@/utils/date.util';
 import type { RequestHandler } from '@sveltejs/kit';
 
 type GqlResponse = {
-	tips: Pick<Tip, 'slug' | 'updatedAt'>[];
-	services: Pick<Service, 'slug' | 'updatedAt'>[];
+	tips: Pick<DirectusTip, 'slug' | 'date_updated'>[];
+	services: Pick<DirectusService, 'slug' | 'date_updated'>[];
 };
 
 type SitemapPage = {
@@ -19,12 +19,12 @@ type SitemapPage = {
 const QUERY = `
 	query sitemap {
 		tips {
-			slug
-			updatedAt
+			slugl
+			date_updated
 		}
 		services {
 			slug
-			updatedAt
+			date_updated
 		}
 	}
 
@@ -46,7 +46,7 @@ const buildXml = (url: string, sites: SitemapPage[]) => {
 
 export const get: RequestHandler = async ({ params, url }) => {
 	const { origin } = url;
-	const { services, tips } = await graphQlRequest<GqlResponse>(QUERY, {}, false);
+	const { services, tips } = await cmsGraphQLRequest<GqlResponse>(QUERY, {}, false);
 
 	const baseUrls = ['/', '/about', '/contact', '/services', '/tips'];
 
@@ -56,12 +56,12 @@ export const get: RequestHandler = async ({ params, url }) => {
 			...services.map<SitemapPage>((s) => ({
 				path: Routes.service(s.slug),
 				changeFreq: 'weekly',
-				lastModified: toDate(s.updatedAt)
+				lastModified: toDate(s.date_updated)
 			})),
 			...tips.map<SitemapPage>((t) => ({
 				path: Routes.tip(t.slug),
 				changeFreq: 'weekly',
-				lastModified: toDate(t.updatedAt)
+				lastModified: toDate(t.date_updated)
 			}))
 		]),
 		headers: {

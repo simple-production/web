@@ -25,7 +25,7 @@
 <Link {href} class="group block space-y-4">
 	<div class="max-h-[60vh] overflow-hidden rounded-sm">
 		<Visual
-			url={Routes.asset(coverImage.id)}
+			url={Routes.asset(coverImage.id, { width: 2880 })}
 			mimeType={coverImage.type}
 			alt={title}
 			class="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-[1.05]"

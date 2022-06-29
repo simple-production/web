@@ -17,7 +17,7 @@
 		{#each partners as partner}
 			<div class="h-60">
 				<Visual
-					url={Routes.asset(partner.logo.id)}
+					url={Routes.asset(partner.logo.id, { width: 300 })}
 					mimeType={partner.logo.type}
 					alt={partner.name}
 					class="h-full w-full object-contain p-4"
