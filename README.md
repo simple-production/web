@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="../web/static/icons/android-chrome-512x512.png" height="100" />
+	<img src="https://raw.githubusercontent.com/simple-production/web/main/static/icons/android-chrome-512x512.png" height="100" />
 </p>
 <h3 align="center">Simple Production Nordic AB</h3>
 <br/>
