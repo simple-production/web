@@ -2,13 +2,14 @@
 	import Button from '@/components/forms/button.svelte';
 	import Visual from '@/components/layout/visual.svelte';
 	import Heading from '@/components/typography/heading.svelte';
-	import type { ModifiedCMSImage } from '@/models/cms-image';
+	import Routes from '@/constants/routes';
+	import type { DirectusFile } from '@/models/cms/file';
 	import { createEventDispatcher } from 'svelte';
 	import ImageCarousel from '../images/image-carousel.svelte';
 
 	const PER_PAGE = 9;
 
-	export let images: ModifiedCMSImage[];
+	export let images: DirectusFile[];
 	export let page: number;
 
 	const dispatch = createEventDispatcher();
@@ -31,11 +32,11 @@
 		<svelte:fragment slot="black-before">Images</svelte:fragment>
 	</Heading>
 
-	{#each images.slice(0, imagesShown) as { mimeType, modifiedUrl, url }, i}
+	{#each images.slice(0, imagesShown) as { type, id }, i}
 		<button on:click={setCurrentIndex(i)} class="overflow-hidden">
 			<Visual
-				url={modifiedUrl}
-				{mimeType}
+				url={Routes.asset(id, { width: 500 })}
+				mimeType={type}
 				alt="Image {i}"
 				class="h-full w-full object-cover transition-all hover:scale-[1.02] hover:saturate-150"
 			/>

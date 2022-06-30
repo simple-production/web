@@ -24,8 +24,6 @@
 				},
 				body: JSON.stringify(values)
 			});
-
-			console.log(response);
 		}
 	});
 </script>

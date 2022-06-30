@@ -1,14 +1,12 @@
-import { graphQlRequest } from '@/lib/graphql';
-import type { Tip, TipResponse } from '@/models/tip';
+import { cmsGraphQLRequest } from '@/lib/graphql';
+import type { TipGraphQLResponse } from '@/models/api/tips-response';
 import { getFingerprint } from '@/utils/request.util';
 import type { RequestHandler } from '@sveltejs/kit';
-import {
-	PUBLISH_TIP,
-	SET_LIKES_MUTATION,
-	TIP_LIKES_QUERY,
-	TIP_QUERY,
-	type Params
-} from './_common';
+import { SET_LIKES_MUTATION, TIP_LIKES_QUERY } from '../_common';
+
+type Params = {
+	tipId: string;
+};
 
 const setLikes = (likes: string[] | null, fingerprint: string) => {
 	if (!likes) {
@@ -23,7 +21,7 @@ const setLikes = (likes: string[] | null, fingerprint: string) => {
 };
 
 export const put: RequestHandler<Params> = async ({ request, params }) => {
-	const { tipSlug: slug } = params;
+	const { tipId } = params;
 	const fingerprint = getFingerprint(request);
 
 	if (!fingerprint) {
@@ -34,22 +32,20 @@ export const put: RequestHandler<Params> = async ({ request, params }) => {
 	}
 
 	// get the current likes
-	const tip = await graphQlRequest<Pick<TipResponse, 'likes'>, { slug: string }>(TIP_LIKES_QUERY, {
-		slug
-	});
+	const tip = await cmsGraphQLRequest<Pick<TipGraphQLResponse, 'likes'>, { id: string }>(
+		TIP_LIKES_QUERY,
+		{
+			id: tipId
+		}
+	);
 
 	// filter out or set the new like
 	const likes = setLikes(tip.likes, fingerprint);
 
 	// update the tip
-	await graphQlRequest<Pick<TipResponse, 'likes'>, { likes: string[]; slug: string }>(
-		SET_LIKES_MUTATION,
-		{ likes, slug }
-	);
-
-	// publish the tip
-	await graphQlRequest<TipResponse, { slug: string }>(PUBLISH_TIP, {
-		slug
+	await cmsGraphQLRequest<{}, { likes: string[]; id: string }>(SET_LIKES_MUTATION, {
+		likes,
+		id: tipId
 	});
 
 	return {

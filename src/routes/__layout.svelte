@@ -6,8 +6,11 @@
 	import PageTransition from '@/components/layout/page-transition.svelte';
 	import Meta from '@/components/meta.svelte';
 	import Routes from '@/constants/routes';
-	import type { Service } from '@/models/service';
-	import type { Tip } from '@/models/tip';
+	import type {
+		LayoutResponse,
+		LayoutResponseService,
+		LayoutResponseTip
+	} from '@/models/api/layout-response';
 	import { bodyScroll } from '@/stores/bodyscroll.store';
 	import { drawer } from '@/stores/drawer.store';
 	import '@/styles/main.scss';
@@ -15,7 +18,7 @@
 	import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 	export const load: Load = async ({ url, fetch }) => {
-		const { tips, services } = await fetch('/api/layout').then((res) => res.json());
+		const { tips, services }: LayoutResponse = await fetch('/api/layout').then((res) => res.json());
 
 		return {
 			props: {
@@ -29,8 +32,8 @@
 
 <script lang="ts">
 	export let key: string;
-	export let tips: Tip[];
-	export let services: Service[];
+	export let tips: LayoutResponseTip[];
+	export let services: LayoutResponseService[];
 
 	let ref: HTMLDivElement;
 

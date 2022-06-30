@@ -2,8 +2,9 @@
 	import { page } from '$app/stores';
 	import Icon from '@/components/icons/icon.svelte';
 	import Visual from '@/components/layout/visual.svelte';
-	import type { Tip } from '@/models/tip';
-	import type { User } from '@/models/user';
+	import Routes from '@/constants/routes';
+	import type { DirectusUser } from '@/models/cms/collection';
+	import type { DirectusFile } from '@/models/cms/file';
 	import { toDate } from '@/utils/date.util';
 	import { onMount } from 'svelte';
 	import AiFillHeart from 'svelte-icons-pack/ai/AiFillHeart';
@@ -11,11 +12,11 @@
 	import AiShare from 'svelte-icons-pack/ai/AiOutlineShareAlt';
 
 	export let title: string;
-	export let slug: string;
-	export let coverImage: Tip['coverImage'];
-	export let content: Tip['content'];
+	export let id: string;
+	export let coverImage: DirectusFile;
+	export let body: string;
 	export let likes: number;
-	export let createdBy: User;
+	export let createdBy: DirectusUser;
 	export let updatedAt: string;
 	export let isLiked: boolean;
 
@@ -36,7 +37,7 @@
 	};
 
 	const handleLike = () => {
-		fetch(`/api/tips/${slug}/like`, {
+		fetch(`/api/tips/${id}/like`, {
 			method: 'PUT'
 		});
 
@@ -49,26 +50,29 @@
 		}
 	};
 
+	const imageUrl = Routes.asset(coverImage.id);
+	const avatarUrl = Routes.asset(createdBy.avatar.id);
+
 	const buildLdJson = () => {
 		const ldJson = {
 			'@context': 'http://schema.org',
 			'@type': 'Article',
 			headline: title,
-			image: coverImage.url,
+			image: imageUrl,
 			datePublished: toDate(updatedAt),
 			dateModified: toDate(updatedAt),
 			keywords: ['Simple', 'Production', 'Simple Production', 'Lund', 'Photo', 'Video'].join(','),
 			author: {
 				'@type': 'Person',
-				name: createdBy.name,
-				logo: createdBy.picture
+				name: `${createdBy.first_name} ${createdBy.last_name}`,
+				logo: avatarUrl
 			},
 			publisher: {
 				'@type': 'Person',
-				name: createdBy.name,
-				logo: createdBy.picture
+				name: `${createdBy.first_name} ${createdBy.last_name}`,
+				logo: avatarUrl
 			},
-			description: content.text,
+			description: body,
 			mainEntityOfPage: $page.url.origin
 		};
 
@@ -89,7 +93,7 @@
 
 				<span>•</span>
 
-				<span data-article-user>{createdBy.name}</span>
+				<span data-article-user>{createdBy.first_name} {createdBy.last_name}</span>
 			</div>
 		</div>
 
@@ -113,7 +117,8 @@
 	</div>
 
 	<Visual
-		{...coverImage}
+		url={imageUrl}
+		mimeType={coverImage.type}
 		alt={title}
 		class="max-h-[50vh] w-full rounded-sm object-cover object-center"
 		loop
@@ -121,7 +126,7 @@
 	/>
 
 	<div class="wysiwyg">
-		{@html content.html}
+		{@html body}
 	</div>
 </div>
 

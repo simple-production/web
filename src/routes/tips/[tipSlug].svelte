@@ -3,7 +3,7 @@
 	import Icon from '@/components/icons/icon.svelte';
 	import Link from '@/components/layout/link.svelte';
 	import Routes from '@/constants/routes';
-	import type { Tip } from '@/models/tip';
+	import type { TipResponse } from '@/models/api/tips-response';
 	import type { Load } from '@sveltejs/kit';
 	import FiChevronLeft from 'svelte-icons-pack/fi/FiChevronLeft';
 
@@ -15,7 +15,7 @@
 		const { tipSlug } = params;
 
 		try {
-			const tip = await fetch(`/api/tips/${tipSlug}`).then((r) => r.json());
+			const tip: TipResponse = await fetch(`/api/tips/${tipSlug}`).then((r) => r.json());
 
 			return {
 				props: {
@@ -26,7 +26,7 @@
 				},
 				stuff: {
 					title: tip.title,
-					description: tip.content.text
+					description: tip.body
 				}
 			};
 		} catch {
@@ -39,7 +39,7 @@
 </script>
 
 <script lang="ts">
-	export let tip: Tip;
+	export let tip: TipResponse;
 </script>
 
 <Link href={Routes.tips} class="group mb-4 flex items-center gap-2 text-sm">
@@ -49,7 +49,7 @@
 	<span>All tips</span>
 </Link>
 
-<TipComponent {...tip} />
+<TipComponent {...tip} createdBy={tip.user_created} updatedAt={tip.date_created} />
 
 <style lang="scss">
 </style>

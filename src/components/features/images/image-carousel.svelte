@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Button from '@/components/forms/button.svelte';
 	import Visual from '@/components/layout/visual.svelte';
-	import type { CMSImage } from '@/models/cms-image';
+	import Routes from '@/constants/routes';
+	import type { DirectusFile } from '@/models/cms/file';
 	import { onMount } from 'svelte';
 	import Portal from 'svelte-portal';
 	import { fade } from 'svelte/transition';
 
-	export let images: CMSImage[];
+	export let images: DirectusFile[];
 	export let currentImage: number = 0;
 
 	onMount(() => {
@@ -56,12 +57,17 @@
 			</span>
 
 			<div class="flex h-full flex-1 overflow-hidden">
-				{#each images as image}
+				{#each images as { id, type }}
 					<div
 						class="flex h-full w-full flex-shrink-0 items-center justify-center transition-all"
 						style="transform: translate(-{currentImage * 100}%);"
 					>
-						<Visual {...image} alt="Image" class="max-h-[90%] max-w-[90%] object-cover" />
+						<Visual
+							url={Routes.asset(id)}
+							mimeType={type}
+							alt="Image"
+							class="max-h-[90%] max-w-[90%] object-cover"
+						/>
 					</div>
 				{/each}
 			</div>

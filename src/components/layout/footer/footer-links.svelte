@@ -1,12 +1,11 @@
 <script lang="ts">
 	import Routes from '@/constants/routes';
+	import type { LayoutResponseService, LayoutResponseTip } from '@/models/api/layout-response';
 	import type { Route } from '@/models/route';
-	import type { Service } from '@/models/service';
-	import type { Tip } from '@/models/tip';
 	import FooterLinkGroup from './footer-link-group.svelte';
 
-	export let tips: Tip[];
-	export let services: Service[];
+	export let tips: LayoutResponseTip[];
+	export let services: LayoutResponseService[];
 
 	const companyRoutes: Route[] = [
 		{

@@ -1,13 +1,13 @@
 <script lang="ts">
-import type { Service } from '@/models/service';
-import type { Tip } from '@/models/tip';
-import Link from '../link.svelte';
-import FooterBottom from './footer-bottom.svelte';
-import FooterInfo from './footer-info.svelte';
-import FooterLinks from './footer-links.svelte';
+	import type { LayoutResponseService, LayoutResponseTip } from '@/models/api/layout-response';
 
-	export let tips: Tip[];
-	export let services: Service[];
+	import Link from '../link.svelte';
+	import FooterBottom from './footer-bottom.svelte';
+	import FooterInfo from './footer-info.svelte';
+	import FooterLinks from './footer-links.svelte';
+
+	export let tips: LayoutResponseTip[];
+	export let services: LayoutResponseService[];
 </script>
 
 <footer class="max-w pt-32 pb-12">

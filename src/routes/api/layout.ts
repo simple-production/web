@@ -1,33 +1,22 @@
-import { graphQlRequest } from '@/lib/graphql';
+import { cmsGraphQLRequest } from '@/lib/graphql';
+import type { LayoutResponse } from '@/models/api/layout-response';
 import type { RequestHandler } from '@sveltejs/kit';
 
 const QUERY = `
-	query homeQuery {
-		services(first: 3) {
-			slug
-			name
+	query Query {
+		services(limit: 3) {
+		name
+		slug
 		}
-		tips(first: 3) {
-			slug
-			title
+		tips(limit: 3) {
+		title
+		slug
 		}
 	}
-
 `;
 
-type Response = {
-	services: {
-		slug: string;
-		name: string;
-	}[];
-	tips: {
-		slug: string;
-		title: string;
-	}[];
-};
-
-export const get: RequestHandler = async () => {
-	const response = await graphQlRequest<Response>(QUERY, {}, false);
+export const get: RequestHandler<{}, LayoutResponse> = async () => {
+	const response = await cmsGraphQLRequest<LayoutResponse>(QUERY, {}, false);
 
 	return {
 		body: response,

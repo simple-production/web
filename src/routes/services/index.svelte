@@ -1,12 +1,11 @@
 <script lang="ts" context="module">
-	import type { Service } from '@/models/service';
-
 	import ServiceForList from '@/components/features/services/service-for-list.svelte';
 	import Heading from '@/components/typography/heading.svelte';
+	import type { ServicesResponse } from '@/models/api/services-response';
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async ({ fetch }) => {
-		const response: Service[] = await fetch('/api/services')
+		const response: ServicesResponse = await fetch('/api/services')
 			.then((res) => res.json())
 			.catch(() => []);
 
@@ -22,7 +21,7 @@
 </script>
 
 <script lang="ts">
-	export let services: Service[];
+	export let services: ServicesResponse;
 </script>
 
 <div class="space-y-24 pt-8">

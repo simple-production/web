@@ -3,12 +3,15 @@
 	import Info from '@/components/features/startpage/info.svelte';
 	import Partners from '@/components/features/startpage/partners.svelte';
 	import TipShowcase from '@/components/features/startpage/tip-showcase.svelte';
-	import type { Partner } from '@/models/partner';
-	import type { Tip } from '@/models/tip';
+	import type {
+		HomeResponse,
+		HomeResponsePartner,
+		HomeResponseTip
+	} from '@/models/api/home-response';
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async ({ fetch }) => {
-		const { partners, tips } = await fetch('/api/home').then((res) => res.json());
+		const { partners, tips }: HomeResponse = await fetch('/api/home').then((res) => res.json());
 
 		return {
 			props: {
@@ -23,8 +26,8 @@
 </script>
 
 <script lang="ts">
-	export let partners: Partner[];
-	export let tips: Tip[];
+	export let partners: HomeResponsePartner[];
+	export let tips: HomeResponseTip[];
 </script>
 
 <div class="space-y-32">
