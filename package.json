@@ -5,9 +5,7 @@
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
-		"start": "yarn build; node build/index.js",
-		"docker:build": "docker build . -t esektemplate",
-		"docker:run": "docker run -p 3000:3000 esektemplate"
+		"start": "yarn build; node build/index.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "1.0.0-next.58",
@@ -35,7 +33,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@directus/sdk": "^9.13.0",
 		"cookie": "^0.5.0",
 		"dotenv": "^16.0.1",
 		"nanoid": "^4.0.0",
