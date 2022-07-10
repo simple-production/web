@@ -19,7 +19,7 @@ type SitemapPage = {
 const QUERY = `
 	query sitemap {
 		tips {
-			slugl
+			slug
 			date_updated
 		}
 		services {

@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
+		"dev": "vite dev",
+		"build": "vite build",
 		"start": "yarn build; node build/index.js"
 	},
 	"devDependencies": {
@@ -39,6 +39,7 @@
 		"nodemailer": "^6.7.5",
 		"svelte-forms-lib": "^2.0.1",
 		"svelte-icons-pack": "^1.4.6",
-		"svelte-portal": "^2.2.0"
+		"svelte-portal": "^2.2.0",
+		"vite": "^2.9.14"
 	}
 }
