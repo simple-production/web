@@ -2,7 +2,7 @@
 	import Button from '@/components/forms/button.svelte';
 	import Input from '@/components/forms/input.svelte';
 	import { createForm } from 'svelte-forms-lib';
-	import BiBuilding from 'svelte-icons-pack/bi/BiBuilding';
+	import BsBuilding from 'svelte-icons-pack/bs/BsBuilding';
 	import FiMail from 'svelte-icons-pack/fi/FiMail';
 	import FiSend from 'svelte-icons-pack/fi/FiSend';
 	import FiUser from 'svelte-icons-pack/fi/FiUser';
@@ -42,7 +42,7 @@
 		name="company"
 		bind:value={$form.company}
 		on:change={handleChange}
-		icon={BiBuilding}
+		icon={BsBuilding}
 		isRequired={false}
 	/>
 	<Input

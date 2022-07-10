@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="flex items-center justify-between rounded-md bg-simple-light py-4 px-6 text-sm text-black md:p-6"
+	class="bg-simple-light flex items-center justify-between rounded-md py-4 px-6 text-sm text-black md:p-6"
 >
 	<span>&copy; {thisYear} Simple Production AB</span>
 
